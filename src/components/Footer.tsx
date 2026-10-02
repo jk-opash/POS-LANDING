@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { theme } from "@/config/theme";
 
 const AWARDS = [
@@ -19,7 +20,10 @@ const FOOTER_COLS = [
     links: [
       { label: "Billing & POS", href: "/products/billing-pos" },
       { label: "Inventory", href: "/products/inventory-management" },
-      { label: "Online Ordering & Recon", href: "/products/online-ordering-reconciliation" },
+      {
+        label: "Online Ordering & Recon",
+        href: "/products/online-ordering-reconciliation",
+      },
       { label: "Table & Floor Mgmt", href: "/products/table-floor-management" },
       { label: "Menu Management", href: "/products/menu-management" },
       { label: "Reporting", href: "/products/reports" },
@@ -61,7 +65,7 @@ export function Footer() {
       <div
         style={{
           borderBottom: "1px solid rgba(255,255,255,0.07)",
-          padding: "1.25rem 0",
+          padding: "0.5rem 0",
         }}
       >
         <div
@@ -74,34 +78,15 @@ export function Footer() {
             gap: "1rem",
           }}
         >
-          <Link
-            href="/"
-            style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
-          >
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="6" fill="#C52031" />
-              <text
-                x="16"
-                y="22"
-                textAnchor="middle"
-                fill="white"
-                fontSize="18"
-                fontWeight="800"
-                fontFamily="Poppins,sans-serif"
-              >
-                B
-              </text>
-            </svg>
-            <span
-              style={{
-                color: "#fff",
-                fontFamily: "'Playfair Display', serif",
-                fontWeight: 700,
-                fontSize: "1.2rem",
-              }}
-            >
-              BillBite
-            </span>
+          <Link href="/" style={{ display: "flex", alignItems: "center" }}>
+            <Image
+              src="/logo-full.png"
+              alt="BillBite Logo"
+              width={120}
+              height={35}
+              style={{ objectFit: "contain" }}
+              priority
+            />
           </Link>
 
           <div

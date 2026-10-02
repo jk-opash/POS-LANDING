@@ -344,8 +344,6 @@ export default function HomePage() {
   });
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  const fadeRefs = useRef<HTMLElement[]>([]);
-
   /* scroll observer for fade-up elements */
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -377,14 +375,6 @@ export default function HomePage() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const curProduct = PRODUCTS.find((p) => p.id === activeTab)!;
-  const curSolution = SOLUTIONS.find((s) => s.id === activeSol)!;
-
-  const toggleProduct = (p: string) =>
-    setProducts((prev) =>
-      prev.includes(p) ? prev.filter((x) => x !== p) : [...prev, p],
-    );
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -430,7 +420,11 @@ export default function HomePage() {
         <div className="pp-wrap" style={{ marginBottom: "1.75rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <div
-              style={{ flex: 1, height: "1px", background: theme.colors.border }}
+              style={{
+                flex: 1,
+                height: "1px",
+                background: theme.colors.border,
+              }}
             />
             <p
               style={{
@@ -446,7 +440,11 @@ export default function HomePage() {
               businesses across the globe
             </p>
             <div
-              style={{ flex: 1, height: "1px", background: theme.colors.border }}
+              style={{
+                flex: 1,
+                height: "1px",
+                background: theme.colors.border,
+              }}
             />
           </div>
         </div>
@@ -462,8 +460,7 @@ export default function HomePage() {
               left: 0,
               bottom: 0,
               width: "150px",
-              background:
-                `linear-gradient(to right, ${theme.colors.bgLight}, transparent)`,
+              background: `linear-gradient(to right, ${theme.colors.bgLight}, transparent)`,
               zIndex: 2,
               pointerEvents: "none",
             }}
@@ -475,8 +472,7 @@ export default function HomePage() {
               right: 0,
               bottom: 0,
               width: "150px",
-              background:
-                `linear-gradient(to left, ${theme.colors.bgLight}, transparent)`,
+              background: `linear-gradient(to left, ${theme.colors.bgLight}, transparent)`,
               zIndex: 2,
               pointerEvents: "none",
             }}
@@ -594,26 +590,10 @@ export default function HomePage() {
           </div>
 
           {/* Bento Grid */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(12, 1fr)",
-              gap: "1.25rem",
-            }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
             {/* Card 1: One Screen for All Orders — spans 7 cols */}
-            <div
-              className="bento-card fade-up"
-              style={{ gridColumn: "span 7" }}
-            >
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "1.5rem",
-                  alignItems: "center",
-                }}
-              >
+            <div className="bento-card fade-up md:col-span-7">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                 <div>
                   <h3 className="bento-card-title">{BENTO[0].title}</h3>
                   <p className="bento-card-body">{BENTO[0].body}</p>
@@ -644,18 +624,8 @@ export default function HomePage() {
             </div>
 
             {/* Card 2: Full Stock Ledger — spans 5 cols */}
-            <div
-              className="bento-card fade-up"
-              style={{ gridColumn: "span 5" }}
-            >
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "1rem",
-                  alignItems: "center",
-                }}
-              >
+            <div className="bento-card fade-up md:col-span-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
                 <div>
                   <h3 className="bento-card-title">{BENTO[1].title}</h3>
                   <p className="bento-card-body">{BENTO[1].body}</p>
@@ -680,10 +650,7 @@ export default function HomePage() {
             </div>
 
             {/* Card 3: Multiple KOTs per Order — spans 4 cols */}
-            <div
-              className="bento-card fade-up"
-              style={{ gridColumn: "span 4" }}
-            >
+            <div className="bento-card fade-up md:col-span-4">
               <h3 className="bento-card-title">{BENTO[2].title}</h3>
               <p className="bento-card-body">{BENTO[2].body}</p>
               <div
@@ -711,18 +678,8 @@ export default function HomePage() {
             </div>
 
             {/* Card 4: Reconciliation Built-in — spans 8 cols */}
-            <div
-              className="bento-card fade-up"
-              style={{ gridColumn: "span 8" }}
-            >
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "1.5rem",
-                  alignItems: "center",
-                }}
-              >
+            <div className="bento-card fade-up md:col-span-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                 <div>
                   <h3 className="bento-card-title">{BENTO[3].title}</h3>
                   <p className="bento-card-body">{BENTO[3].body}</p>
@@ -2201,7 +2158,7 @@ export default function HomePage() {
       ════════════════════════════════════════════════════ */}
       <section
         style={{
-          backgroundColor: theme.colors.bgLight,
+          backgroundColor: theme.colors.bgDark,
           padding: "5rem 0",
           position: "relative",
           overflow: "hidden",
@@ -2212,7 +2169,7 @@ export default function HomePage() {
             style={{ textAlign: "center", marginBottom: "4rem" }}
             className="fade-up"
           >
-            <span className="badge-outline" style={{ marginBottom: "1.25rem" }}>
+            <span className="badge-outline-white" style={{ marginBottom: "1.25rem" }}>
               SUCCESS STORIES
             </span>
             <h2
@@ -2220,7 +2177,7 @@ export default function HomePage() {
                 fontFamily: theme.fonts.heading,
                 fontWeight: 700,
                 fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                color: theme.colors.textDark,
+                color: theme.colors.textLight,
                 lineHeight: 1.1,
               }}
             >
@@ -2235,12 +2192,12 @@ export default function HomePage() {
           <div className="fade-up grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Card 1 - Span 8 */}
             <div
-              className="md:col-span-8 bento-card-dark"
+              className="md:col-span-8 bento-card"
               style={{
-                background: theme.colors.bgDark,
+                background: theme.colors.bgSurface,
                 padding: "3rem",
                 borderRadius: "2rem",
-                color: "#fff",
+                color: theme.colors.textDark,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -2334,7 +2291,7 @@ export default function HomePage() {
                       fontFamily: theme.fonts.heading,
                       fontWeight: 700,
                       fontSize: "1.1rem",
-                      color: "#fff",
+                      color: theme.colors.textDark,
                     }}
                   >
                     {TESTIS[0].name}
@@ -2342,7 +2299,7 @@ export default function HomePage() {
                   <p
                     style={{
                       fontSize: "0.9rem",
-                      color: "rgba(255,255,255,0.6)",
+                      color: "rgba(0,0,0,0.6)",
                     }}
                   >
                     {TESTIS[0].role}
@@ -2486,12 +2443,12 @@ export default function HomePage() {
 
             {/* Card 4 - Span 8 */}
             <div
-              className="md:col-span-8 bento-card-dark"
+              className="md:col-span-8 bento-card"
               style={{
-                background: theme.colors.bgDark,
+                background: theme.colors.bgSurface,
                 padding: "3rem",
                 borderRadius: "2rem",
-                color: "#fff",
+                color: theme.colors.textDark,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -2603,7 +2560,7 @@ export default function HomePage() {
                       fontFamily: theme.fonts.heading,
                       fontWeight: 700,
                       fontSize: "1.1rem",
-                      color: "#fff",
+                      color: theme.colors.textDark,
                     }}
                   >
                     {TESTIS[2].name}
@@ -2611,7 +2568,7 @@ export default function HomePage() {
                   <p
                     style={{
                       fontSize: "0.9rem",
-                      color: "rgba(255,255,255,0.6)",
+                      color: "rgba(0,0,0,0.6)",
                     }}
                   >
                     {TESTIS[2].role}
@@ -2629,7 +2586,7 @@ export default function HomePage() {
       <section
         id="demo-form"
         style={{
-          backgroundColor: theme.colors.bgDark,
+          backgroundColor: theme.colors.bgLight,
           padding: "6rem 0",
           position: "relative",
           overflow: "hidden",
@@ -2637,11 +2594,11 @@ export default function HomePage() {
       >
         <div
           className="glow-bg"
-          style={{ top: "-200px", left: "-200px", opacity: 0.4 }}
+          style={{ top: "-200px", left: "-200px", opacity: 0.1 }}
         ></div>
         <div
           className="glow-bg"
-          style={{ bottom: "-300px", right: "-200px", opacity: 0.2 }}
+          style={{ bottom: "-300px", right: "-200px", opacity: 0.05 }}
         ></div>
 
         <div className="pp-wrap relative z-10">
@@ -2657,7 +2614,7 @@ export default function HomePage() {
             {/* Left: heading & benefits */}
             <div>
               <span
-                className="badge-outline-white"
+                className="badge-outline"
                 style={{ marginBottom: "1.25rem" }}
               >
                 GET STARTED
@@ -2667,7 +2624,7 @@ export default function HomePage() {
                   fontFamily: theme.fonts.heading,
                   fontWeight: 800,
                   fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                  color: "#fff",
+                  color: theme.colors.textDark,
                   lineHeight: 1.1,
                   marginBottom: "1.5rem",
                 }}
@@ -2676,7 +2633,7 @@ export default function HomePage() {
               </h2>
               <p
                 style={{
-                  color: "rgba(255,255,255,0.7)",
+                  color: theme.colors.textMuted,
                   fontSize: "1.1rem",
                   lineHeight: 1.6,
                   marginBottom: "3rem",
@@ -2708,7 +2665,7 @@ export default function HomePage() {
                       display: "flex",
                       alignItems: "center",
                       gap: "1rem",
-                      color: "#fff",
+                      color: theme.colors.textDark,
                       fontSize: "1.05rem",
                       fontWeight: 500,
                     }}
@@ -2740,8 +2697,8 @@ export default function HomePage() {
                 background: theme.colors.bgSurface,
                 padding: "clamp(2rem, 4vw, 3rem)",
                 borderRadius: "2rem",
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                boxShadow: "var(--shadow-lg)",
+                border: `1px solid ${theme.colors.border}`,
               }}
             >
               {formSent ? (
@@ -3078,15 +3035,19 @@ export default function HomePage() {
           boxShadow: "0 10px 25px rgba(255, 90, 31, 0.4)",
           opacity: showTop ? 1 : 0,
           visibility: showTop ? "visible" : "hidden",
-          transform: showTop ? "translateY(0) scale(1)" : "translateY(20px) scale(0.9)",
+          transform: showTop
+            ? "translateY(0) scale(1)"
+            : "translateY(20px) scale(0.9)",
           transition: "all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
           zIndex: 999,
         }}
         onMouseEnter={(e) => {
-          if (showTop) e.currentTarget.style.transform = "translateY(-5px) scale(1.05)";
+          if (showTop)
+            e.currentTarget.style.transform = "translateY(-5px) scale(1.05)";
         }}
         onMouseLeave={(e) => {
-          if (showTop) e.currentTarget.style.transform = "translateY(0) scale(1)";
+          if (showTop)
+            e.currentTarget.style.transform = "translateY(0) scale(1)";
         }}
       >
         <svg

@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   description:
     "BillBite is India's leading restaurant management software — POS billing, Zomato & Swiggy integration, inventory, payout reconciliation, and multi-branch analytics. Trusted by 1,50,000+ businesses.",
   keywords: "restaurant POS software India, billing software, Zomato Swiggy integration, restaurant management, cloud kitchen POS",
+  icons: {
+    icon: [
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
 };
 
 export default function RootLayout({

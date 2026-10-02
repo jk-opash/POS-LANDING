@@ -145,11 +145,10 @@ export function Header() {
               alignItems: "center",
               flexShrink: 0,
               textDecoration: "none",
-              marginTop: "30px",
             }}
           >
             <Image
-              src="/logo-hat.png"
+              src="/logo-full.png"
               alt="BillBite Logo"
               width={80}
               height={45}
@@ -432,7 +431,7 @@ export function Header() {
               className="btn-primary desktop-cta"
               style={{ fontSize: "0.9375rem", padding: "0.6rem 1.35rem" }}
             >
-              Get Started
+              Book a Demo
             </Link>
             <button
               onClick={() => setMobileOpen(true)}
@@ -495,7 +494,7 @@ export function Header() {
               }}
             >
               <Image
-                src="/logo-hat.png"
+                src="/logo-full.png"
                 alt="BillBite Logo"
                 width={120}
                 height={38}
@@ -608,7 +607,7 @@ export function Header() {
                   fontSize: "1rem",
                 }}
               >
-                Book Demo
+                Book a Demo
               </Link>
             </div>
           </nav>

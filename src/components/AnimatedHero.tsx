@@ -1,37 +1,11 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-
-const PRODUCTS = [
-  {
-    id: "pos",
-    title: "Billing & POS",
-    desc: "Manage dine-in, takeaway, and delivery from one screen. Split bills, multiple payment methods, and GST-compliant auto-generated invoices.",
-    btn: "Explore Billing",
-    img: "https://petpoojaweb.gumlet.io/images/home-new/poss-slider1.png?fm=auto&w=900&q=85",
-  },
-  {
-    id: "inventory",
-    title: "Inventory",
-    desc: "Real-time stock tracking, reorder alerts, recipe-linked auto-deductions, and a complete movement ledger.",
-    btn: "Track Stock",
-    img: "https://petpoojaweb.gumlet.io/images/home-new/poss-slider2.png?fm=auto&w=900&q=85",
-  },
-  {
-    id: "online",
-    title: "Online Orders",
-    desc: "Accept and reject Zomato & Swiggy orders directly in your POS. Built-in reconciliation tracks gross vs net payouts.",
-    btn: "Sync Aggregators",
-    img: "https://petpoojaweb.gumlet.io/images/home-new/poss-slider3.png?fm=auto&w=900&q=85",
-  },
-  {
-    id: "reports",
-    title: "Live Reports",
-    desc: "Live dashboards for sales, inventory, and staff performance. Multi-branch analytics let you compare outlet performance instantly.",
-    btn: "View Analytics",
-    img: "https://petpoojaweb.gumlet.io/images/home-new/poss-slider1.png?fm=auto&w=900&q=85",
-  },
-];
+import { IMAGES } from "../assets";
+import { theme } from "../config/theme";
+import { Button } from "./Button";
+import { Tabs } from "./Tabs";
+import { PRODUCTS } from "../constants/products";
 
 export default function AnimatedHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -73,15 +47,17 @@ export default function AnimatedHero() {
   const [activeTab, setActiveTab] = React.useState(0);
 
   return (
-    <div ref={containerRef} style={{ height: "400vh", position: "relative" }}>
+    <div ref={containerRef} style={{ height: "700vh", position: "relative" }}>
       {/* Sticky container offset by Header height (64px) */}
       <div
         style={{
           position: "sticky",
-          top: "64px",
-          height: "calc(100vh - 64px)",
+          top: "75px",
+          height: "calc(100vh - 75px)",
           overflow: "hidden",
-          padding: "1rem",
+          paddingRight: "1rem",
+          paddingLeft: "1rem",
+          paddingBottom: "1rem",
         }}
       >
         {/* Main Background Container */}
@@ -92,7 +68,10 @@ export default function AnimatedHero() {
             borderRadius: "2rem",
             overflow: "hidden",
             position: "relative",
-            backgroundColor: "#e2e8f0", // Fallback color
+            backgroundColor: theme.colors.bgLight, // Fallback color
+            borderStyle: "solid",
+            borderColor: theme.colors.borderLight,
+            borderWidth: 1,
           }}
         >
           {/* Static Background Image */}
@@ -122,14 +101,13 @@ export default function AnimatedHero() {
           >
             <h1
               style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: theme.fonts.heading,
                 fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
                 lineHeight: 1.1,
-                color: "#171717",
+                color: theme.colors.textDark,
                 maxWidth: "900px",
                 margin: "0 auto",
                 fontWeight: 500,
-                textShadow: "0 4px 20px rgba(255,255,255,0.5)",
               }}
             >
               Run Every Outlet Like You're Standing in All of Them.
@@ -152,14 +130,13 @@ export default function AnimatedHero() {
           >
             <h1
               style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: theme.fonts.heading,
                 fontSize: "clamp(2rem, 4vw, 3.5rem)",
                 lineHeight: 1.1,
-                color: "#171717",
+                color: theme.colors.textDark,
                 maxWidth: "900px",
                 margin: "0 auto",
                 fontWeight: 500,
-                textShadow: "0 4px 20px rgba(255,255,255,0.5)",
               }}
             >
               Multi-branch POS, GST-ready billing, and complete stock audit.
@@ -170,14 +147,11 @@ export default function AnimatedHero() {
           <motion.div
             style={{
               position: "absolute",
-              bottom: "-5%",
+              bottom: "-4%",
               left: "50%",
-              width: "800px",
+              width: "900px",
               height: "auto",
-              marginLeft: "-400px",
-              background: "#171717",
-              borderRadius: "1.5rem",
-              boxShadow: "0 30px 60px rgba(0,0,0,0.2)",
+              marginLeft: "-450px",
               padding: "0.5rem",
               zIndex: 5,
               overflow: "hidden",
@@ -186,13 +160,13 @@ export default function AnimatedHero() {
             }}
           >
             <img
-              src="https://petpoojaweb.gumlet.io/images/home-new/poss-slider1.png?fm=auto&w=900&q=85"
+              src={IMAGES.heroBg}
               alt="BillBite Dashboard"
               style={{
                 width: "100%",
                 height: "auto",
                 display: "block",
-                borderRadius: "1rem",
+                borderRadius: theme.radii.card,
               }}
             />
           </motion.div>
@@ -205,12 +179,12 @@ export default function AnimatedHero() {
               left: 0,
               right: 0,
               height: "65%",
-              background: "#fff",
+              background: theme.colors.bgSurface,
               zIndex: 20,
               y: panelY,
               borderTopLeftRadius: "2rem",
               borderTopRightRadius: "2rem",
-              boxShadow: "0 -20px 40px rgba(0,0,0,0.05)",
+              boxShadow: theme.shadows.lg,
               display: "flex",
               padding: "3rem",
             }}
@@ -221,51 +195,11 @@ export default function AnimatedHero() {
               <div
                 style={{ flex: 1, display: "flex", flexDirection: "column" }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "2rem",
-                    borderBottom: "1px solid rgba(0,0,0,0.1)",
-                    paddingBottom: "1rem",
-                    marginBottom: "3rem",
-                  }}
-                >
-                  {PRODUCTS.map((tab, i) => (
-                    <div
-                      key={i}
-                      onClick={() => setActiveTab(i)}
-                      style={{
-                        cursor: "pointer",
-                        position: "relative",
-                        color: activeTab === i ? "#171717" : "#888",
-                        transition: "color 0.3s",
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontWeight: 600,
-                          fontSize: "1rem",
-                          marginBottom: "0.25rem",
-                        }}
-                      >
-                        {tab.title}
-                      </div>
-                      {activeTab === i && (
-                        <motion.div
-                          layoutId="activeTab"
-                          style={{
-                            position: "absolute",
-                            bottom: "-1rem",
-                            left: 0,
-                            right: 0,
-                            height: "2px",
-                            background: "#FF5A1F",
-                          }}
-                        />
-                      )}
-                    </div>
-                  ))}
-                </div>
+                <Tabs
+                  items={PRODUCTS.map(p => ({ label: p.title }))}
+                  activeIndex={activeTab}
+                  onChange={setActiveTab}
+                />
 
                 <div style={{ flex: 1, position: "relative" }}>
                   <motion.h2
@@ -275,7 +209,7 @@ export default function AnimatedHero() {
                     style={{
                       fontSize: "2.5rem",
                       fontWeight: 400,
-                      fontFamily: "'Playfair Display', serif",
+                      fontFamily: theme.fonts.heading,
                       marginBottom: "1rem",
                     }}
                   >
@@ -288,46 +222,45 @@ export default function AnimatedHero() {
                     transition={{ delay: 0.1 }}
                     style={{
                       fontSize: "1.05rem",
-                      color: "#666",
+                      color: theme.colors.textMuted,
                       lineHeight: 1.6,
                       maxWidth: "450px",
                       marginBottom: "2.5rem",
+                      fontFamily: theme.fonts.body,
                     }}
                   >
                     {PRODUCTS[activeTab].desc}
                   </motion.p>
-                  <motion.button
+                  <Button
                     key={activeTab + "-btn"}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    style={{
-                      background: "#FF5A1F",
-                      color: "#fff",
-                      padding: "1rem 2.5rem",
-                      borderRadius: "100px",
-                      fontWeight: 600,
-                      border: "none",
-                      cursor: "pointer",
-                      boxShadow: "0 10px 25px rgba(255,90,31,0.3)",
+                    animated
+                    variant="primary"
+                    size="lg"
+                    shape="pill"
+                    motionProps={{
+                      initial: { opacity: 0, y: 10 },
+                      animate: { opacity: 1, y: 0 },
+                      transition: { delay: 0.2 },
                     }}
                   >
                     {PRODUCTS[activeTab].btn}
-                  </motion.button>
+                  </Button>
                 </div>
               </div>
 
               {/* Right Side: Visual Context */}
               <div
+                className="justify-center items-center flex flex-col relative"
                 style={{
                   flex: 1,
                   position: "relative",
                   borderRadius: "1.5rem",
                   overflow: "hidden",
-                  background: "#F9FAFB",
+                  background: theme.colors.bgLight,
                 }}
               >
                 <div
+                  className="w-full h-full "
                   style={{
                     position: "absolute",
                     inset: 0,
@@ -339,27 +272,26 @@ export default function AnimatedHero() {
 
                 {/* Floating UI specific to tab (Using real images) */}
                 <motion.div
+                  className="relative"
                   key={activeTab + "-img"}
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: "85%",
                     borderRadius: "1rem",
                     overflow: "hidden",
-                    boxShadow: "0 30px 60px rgba(0,0,0,0.3)",
-                    border: "4px solid rgba(255,255,255,0.5)",
-                    background: "#fff",
+                    height: "320px",
                   }}
                 >
                   <img
-                    src={PRODUCTS[activeTab].img}
+                    src={
+                      typeof PRODUCTS[activeTab].img === "string"
+                        ? PRODUCTS[activeTab].img
+                        : (PRODUCTS[activeTab].img as { src: string }).src
+                    }
                     alt={PRODUCTS[activeTab].title}
-                    style={{ width: "100%", height: "auto", display: "block" }}
+                    style={{ width: "auto", height: "100%", display: "block" }}
                   />
                 </motion.div>
               </div>

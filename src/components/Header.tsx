@@ -115,15 +115,16 @@ export function Header() {
           top: 0,
           zIndex: 999,
           backgroundColor: scrolled
-            ? "rgba(23, 23, 23, 0.65)"
-            : "rgba(23, 23, 23, 0.85)",
+            ? theme.colors.glassLight
+            : theme.colors.bgSurface,
           backdropFilter: scrolled ? "blur(16px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
-          boxShadow: scrolled ? "0 4px 30px rgba(0, 0, 0, 0.05)" : "none",
+          boxShadow: scrolled ? theme.shadows.sm : "none",
           borderBottom: scrolled
-            ? "1px solid rgba(0,0,0,0.05)"
+            ? `1px solid ${theme.colors.borderLight}`
             : "1px solid transparent",
           transition: "all 0.7s ease",
+          fontFamily: theme.fonts.body,
         }}
       >
         <div
@@ -133,10 +134,10 @@ export function Header() {
             alignItems: "center",
             justifyContent: "space-between",
             height: "72px",
+            padding: theme.spacing.containerPadding,
           }}
           ref={navRef}
         >
-          {/* Logo */}
           <Link
             href="/"
             onClick={closeMenu}
@@ -157,7 +158,6 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop Nav */}
           <div
             className="pp-desktop-nav"
             style={{
@@ -187,7 +187,7 @@ export function Header() {
                         color:
                           openDropdown === item.label
                             ? theme.colors.accent
-                            : theme.colors.textLight,
+                            : theme.colors.textDark,
                         fontFamily: theme.fonts.body,
                         fontSize: "0.95rem",
                         fontWeight: 600,
@@ -235,9 +235,9 @@ export function Header() {
                             item.label === "Outlet Types"
                               ? "translateY(0)"
                               : "translateX(-50%) translateY(0)",
-                          background: "#fff",
-                          borderRadius: "16px",
-                          boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
+                          background: theme.colors.bgSurface,
+                          borderRadius: theme.radii.card,
+                          boxShadow: theme.shadows.lg,
                           width:
                             item.label === "Products" ||
                             item.label === "Outlet Types"
@@ -334,9 +334,9 @@ export function Header() {
                             </div>
                             <div
                               style={{
-                                background: theme.colors.bgLight,
+                                background: theme.colors.secondaryLight,
                                 padding: "1.5rem",
-                                borderRadius: "12px",
+                                borderRadius: theme.radii.button,
                                 display: "flex",
                                 flexDirection: "column",
                                 justifyContent: "center",
@@ -358,9 +358,10 @@ export function Header() {
                               <p
                                 style={{
                                   fontSize: "0.85rem",
-                                  color: "#555",
+                                  color: theme.colors.textMuted,
                                   marginBottom: "1.25rem",
                                   lineHeight: 1.5,
+                                  fontFamily: theme.fonts.body,
                                 }}
                               >
                                 Book a live demo with our experts and see how
@@ -375,6 +376,8 @@ export function Header() {
                                   textAlign: "center",
                                   padding: "0.6rem",
                                   fontSize: "0.9rem",
+                                  borderRadius: theme.radii.button,
+                                  fontFamily: theme.fonts.body,
                                 }}
                               >
                                 Book a Demo
@@ -408,7 +411,7 @@ export function Header() {
                     href={item.href!}
                     onClick={closeMenu}
                     style={{
-                      color: theme.colors.textLight,
+                      color: theme.colors.textDark,
                       fontFamily: theme.fonts.body,
                       fontSize: "0.95rem",
                       fontWeight: 600,
@@ -423,13 +426,17 @@ export function Header() {
             ))}
           </div>
 
-          {/* CTA & Mobile Toggle */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <Link
               href="/#demo-form"
               onClick={closeMenu}
               className="btn-primary desktop-cta"
-              style={{ fontSize: "0.9375rem", padding: "0.6rem 1.35rem" }}
+              style={{
+                fontSize: "0.9375rem",
+                padding: "0.6rem 1.35rem",
+                borderRadius: theme.radii.button,
+                fontFamily: theme.fonts.body,
+              }}
             >
               Book a Demo
             </Link>
@@ -473,6 +480,7 @@ export function Header() {
             backgroundColor: theme.colors.bgLight,
             overflowY: "auto",
             animation: "slideInLeft 0.25s ease",
+            fontFamily: theme.fonts.body,
           }}
         >
           <div
@@ -564,7 +572,7 @@ export function Header() {
                             alignItems: "center",
                             gap: "0.75rem",
                             padding: "0.6rem 0",
-                            color: "#444",
+                            color: theme.colors.textMuted,
                             fontSize: "0.95rem",
                             textDecoration: "none",
                           }}
@@ -605,6 +613,8 @@ export function Header() {
                   textAlign: "center",
                   padding: "0.875rem",
                   fontSize: "1rem",
+                  borderRadius: theme.radii.button,
+                  fontFamily: theme.fonts.body,
                 }}
               >
                 Book a Demo
@@ -631,14 +641,15 @@ export function Header() {
           padding: 0.75rem 0.75rem;
           color: ${theme.colors.textDark};
           text-decoration: none;
-          border-radius: 8px;
+          border-radius: ${theme.radii.button};
           transition: background 0.15s, color 0.15s;
           font-weight: 600;
           font-size: 0.95rem;
+          font-family: ${theme.fonts.body};
         }
 
         .desktop-dropdown-link:hover {
-          background: ${theme.colors.bgLight};
+          background: ${theme.colors.secondaryLight};
           color: ${theme.colors.accent};
         }
 

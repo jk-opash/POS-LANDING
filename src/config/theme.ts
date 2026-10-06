@@ -71,10 +71,9 @@ export const theme = {
       a15: "rgba(0, 0, 0, 0.15)",
     }
   },
-  
   fonts: {
-    heading: "'Playfair Display', serif",
-    body: "'DM Sans', sans-serif",
+    heading: "var(--font-lato), sans-serif",
+    body: "var(--font-lato), sans-serif",
   },
   
   shadows: {

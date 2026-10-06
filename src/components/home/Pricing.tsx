@@ -1,706 +1,421 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { theme } from "@/config/theme";
-
+import { Check } from "lucide-react";
+import { PRICING_PLANS } from "@/constants/home";
 
 export default function Pricing() {
   const [billing, setBilling] = useState<"monthly" | "yearly">("yearly");
 
   return (
-    <>
-      {/* ════════════════════════════════════════════════════
-          6A. PRICING TEASER
-      ════════════════════════════════════════════════════ */}
-      <section
-        style={{ backgroundColor: theme.colors.bgDark, padding: "5rem 0" }}
-      >
-        <div className="pp-wrap">
-          <div
-            className="fade-up"
-            style={{ textAlign: "center", marginBottom: "3.5rem" }}
-          >
-            <span
-              className="badge-outline-white"
-              style={{
-                marginBottom: "1.25rem",
-                display: "inline-block",
-                color: theme.colors.bgSurface,
-                border: `1px solid ${theme.colors.bgSurface}`,
-                padding: "0.25rem 0.75rem",
-                borderRadius: "100px",
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                letterSpacing: "0.05em",
-              }}
-            >
-              SIMPLE PRICING
-            </span>
-            <h2
-              style={{
-                fontFamily: theme.fonts.heading,
-                fontWeight: 700,
-                fontSize: "clamp(1.75rem, 4vw, 3rem)",
-                color: theme.colors.textLight,
-                lineHeight: 1.1,
-                maxWidth: "600px",
-                margin: "1.25rem auto 1rem",
-              }}
-            >
-              Transparent Plans for Every Stage
-            </h2>
-            <p
-              style={{
-                color: theme.colors.whiteAlpha.a70,
-                maxWidth: "600px",
-                margin: "0 auto 2rem",
-                fontSize: "1.1rem",
-              }}
-            >
-              No hidden fees, no surprise charges. Upgrade or downgrade at any
-              time as your business grows.
-            </p>
+    <section
+      style={{
+        backgroundColor: theme.colors.bgDark,
+        padding: "8rem 0",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Background Glows */}
+      <div
+        style={{
+          position: "absolute",
+          top: "10%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "60vw",
+          height: "60vw",
+          background: `radial-gradient(circle, ${theme.colors.accent}15 0%, transparent 70%)`,
+          borderRadius: "50%",
+          filter: "blur(120px)",
+          pointerEvents: "none",
+        }}
+      />
 
-            {/* Toggle */}
-            <div
-              style={{
-                display: "inline-flex",
-                background: theme.colors.whiteAlpha.a05,
-                borderRadius: "2rem",
-                padding: "0.25rem",
-                border: `1px solid ${theme.colors.borderLight}`,
-              }}
-            >
-              <button
-                onClick={() => setBilling("monthly")}
-                style={{
-                  padding: "0.75rem 1.5rem",
-                  borderRadius: "2rem",
-                  border: "none",
-                  fontSize: "0.9rem",
-                  fontWeight: 600,
-                  background:
-                    billing === "monthly" ? theme.colors.accent : "transparent",
-                  color:
-                    billing === "monthly"
-                      ? theme.colors.textLight
-                      : theme.colors.whiteAlpha.a70,
-                  cursor: "pointer",
-                  transition: "all 0.2s",
-                }}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setBilling("yearly")}
-                style={{
-                  padding: "0.75rem 1.5rem",
-                  borderRadius: "2rem",
-                  border: "none",
-                  fontSize: "0.9rem",
-                  fontWeight: 600,
-                  background:
-                    billing === "yearly" ? theme.colors.accent : "transparent",
-                  color:
-                    billing === "yearly"
-                      ? theme.colors.textLight
-                      : theme.colors.whiteAlpha.a70,
-                  cursor: "pointer",
-                  transition: "all 0.2s",
-                }}
-              >
-                Yearly (Save 20%)
-              </button>
-            </div>
-          </div>
-
-          <div
+      <div className="pp-wrap relative z-10">
+        <div
+          className="fade-up"
+          style={{ textAlign: "center", marginBottom: "4rem" }}
+        >
+          <span
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-              gap: "1.5rem",
+              marginBottom: "1.5rem",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              color: theme.colors.accent,
+              background: `${theme.colors.accent}15`,
+              border: `1px solid ${theme.colors.accent}30`,
+              padding: "0.5rem 1rem",
+              borderRadius: "100px",
+              fontSize: "0.75rem",
+              fontWeight: 800,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
             }}
           >
-            {/* Starter */}
-            <div
-              className="bento-card-dark fade-up"
+            <span
               style={{
-                background: theme.colors.whiteAlpha.a03,
-                border: `1px solid ${theme.colors.borderLight}`,
-                padding: "2rem",
-                borderRadius: "2rem",
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: theme.colors.accent,
+                display: "inline-block",
+                boxShadow: `0 0 10px ${theme.colors.accent}`,
               }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.5rem",
-                  fontFamily: theme.fonts.heading,
-                  fontWeight: 700,
-                  color: theme.colors.textLight,
-                }}
-              >
-                Starter
-              </h3>
-              <p
-                style={{
-                  color: theme.colors.whiteAlpha.a70,
-                  marginTop: "0.5rem",
-                  fontSize: "0.9rem",
-                }}
-              >
-                Everything you need to run one outlet without spreadsheets.
-              </p>
-              <div
-                style={{
-                  margin: "2rem 0",
-                  padding: "1.5rem 0",
-                  borderTop: `1px solid ${theme.colors.borderLight}`,
-                  borderBottom: `1px solid ${theme.colors.borderLight}`,
-                }}
-              >
-                <p
-                  style={{
-                    color: theme.colors.textLight,
-                    fontSize: "2.5rem",
-                    fontFamily: theme.fonts.heading,
-                    fontWeight: 800,
-                  }}
-                >
-                  {billing === "yearly" ? "₹999" : "₹1,249"}
-                  <span
-                    style={{
-                      fontSize: "1rem",
-                      color: theme.colors.whiteAlpha.a60,
-                      fontWeight: 400,
-                    }}
-                  >
-                    /month
-                  </span>
-                </p>
-                <p
-                  style={{
-                    color: theme.colors.secondaryMuted,
-                    fontSize: "0.75rem",
-                    marginTop: "0.25rem",
-                  }}
-                >
-                  Billed {billing === "yearly" ? "annually" : "monthly"} + 18%
-                  GST
-                </p>
-              </div>
-              <ul
-                style={{
-                  listStyle: "none",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.75rem",
-                  marginBottom: "2rem",
-                  padding: 0,
-                }}
-              >
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Core Billing & POS
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Offline Support
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Standard Reports
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Email Support
-                </li>
-              </ul>
-              <Link
-                href="/#demo-form"
-                className="btn-outline-pill"
-                style={{
-                  display: "block",
-                  textAlign: "center",
-                  color: theme.colors.textLight,
-                  borderColor: theme.colors.borderLight,
-                }}
-              >
-                Start Free Trial
-              </Link>
-            </div>
+            />
+            Simple Pricing
+          </span>
+          <h2
+            style={{
+              fontFamily: theme.fonts.heading,
+              fontWeight: 800,
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
+              color: theme.colors.textLight,
+              lineHeight: 1.1,
+              maxWidth: "700px",
+              margin: "0 auto 1.5rem",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Transparent Plans for Every Stage
+          </h2>
+          <p
+            style={{
+              color: theme.colors.textMuted,
+              maxWidth: "600px",
+              margin: "0 auto 3rem",
+              fontSize: "1.1rem",
+              lineHeight: 1.6,
+            }}
+          >
+            No hidden fees, no surprise charges. Upgrade or downgrade at any
+            time as your business grows.
+          </p>
 
-            {/* Growth */}
+          {/* Premium Animated Toggle */}
+          <div
+            style={{
+              display: "inline-grid",
+              gridTemplateColumns: "1fr 1fr",
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "100px",
+              padding: "0.35rem",
+              position: "relative",
+              backdropFilter: "blur(10px)",
+            }}
+          >
             <div
-              className="bento-card fade-up"
               style={{
-                background: theme.colors.whiteAlpha.a05,
-                border: `2px solid ${theme.colors.accent}`,
+                position: "absolute",
+                top: "0.35rem",
+                bottom: "0.35rem",
+                left: billing === "monthly" ? "0.35rem" : "50%",
+                width: "calc(50% - 0.35rem)",
+                background: theme.colors.accent,
+                borderRadius: "100px",
+                transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                boxShadow: `0 4px 12px ${theme.colors.accent}40`,
+              }}
+            />
+            <button
+              onClick={() => setBilling("monthly")}
+              style={{
+                padding: "0.75rem 2rem",
+                borderRadius: "100px",
+                border: "none",
+                fontSize: "0.95rem",
+                fontWeight: 700,
+                background: "transparent",
+                color:
+                  billing === "monthly"
+                    ? theme.colors.textLight
+                    : theme.colors.textMuted,
+                cursor: "pointer",
+                transition: "color 0.4s ease",
                 position: "relative",
-                padding: "2rem",
-                borderRadius: "2rem",
-                overflow: "visible",
+                zIndex: 1,
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  background: theme.colors.accent,
-                  color: theme.colors.textLight,
-                  padding: "0.25rem 1rem",
-                  borderRadius: "1rem",
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.05em",
-                  whiteSpace: "nowrap",
-                  zIndex: 10,
-                }}
-              >
-                MOST POPULAR
-              </div>
-              <h3
-                style={{
-                  fontSize: "1.5rem",
-                  fontFamily: theme.fonts.heading,
-                  fontWeight: 700,
-                  color: theme.colors.textLight,
-                }}
-              >
-                Growth
-              </h3>
-              <p
-                style={{
-                  color: theme.colors.whiteAlpha.a70,
-                  marginTop: "0.5rem",
-                  fontSize: "0.9rem",
-                }}
-              >
-                Add outlets, inventory, and aggregator orders without adding
-                chaos.
-              </p>
-              <div
-                style={{
-                  margin: "2rem 0",
-                  padding: "1.5rem 0",
-                  borderTop: `1px solid ${theme.colors.borderLight}`,
-                  borderBottom: `1px solid ${theme.colors.borderLight}`,
-                }}
-              >
-                <p
-                  style={{
-                    color: theme.colors.textLight,
-                    fontSize: "2.5rem",
-                    fontFamily: theme.fonts.heading,
-                    fontWeight: 800,
-                  }}
-                >
-                  {billing === "yearly" ? "₹2,499" : "₹3,124"}
-                  <span
-                    style={{
-                      fontSize: "1rem",
-                      color: theme.colors.whiteAlpha.a60,
-                      fontWeight: 400,
-                    }}
-                  >
-                    /mo/outlet
-                  </span>
-                </p>
-                <p
-                  style={{
-                    color: theme.colors.secondaryMuted,
-                    fontSize: "0.75rem",
-                    marginTop: "0.25rem",
-                  }}
-                >
-                  Billed {billing === "yearly" ? "annually" : "monthly"} + 18%
-                  GST
-                </p>
-              </div>
-              <ul
-                style={{
-                  listStyle: "none",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.75rem",
-                  marginBottom: "2rem",
-                  padding: 0,
-                }}
-              >
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Everything in Starter
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Online Order Sync
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Inventory Management
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Multi-branch Dashboard
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Phone & Chat Support
-                </li>
-              </ul>
-              <Link
-                href="/#demo-form"
-                className="btn-primary"
-                style={{
-                  display: "block",
-                  textAlign: "center",
-                  color: theme.colors.textLight,
-                  boxShadow: theme.shadows.lg,
-                }}
-              >
-                Get Started
-              </Link>
-            </div>
-
-            {/* Professional */}
-            <div
-              className="bento-card-dark fade-up"
+              Monthly
+            </button>
+            <button
+              onClick={() => setBilling("yearly")}
               style={{
-                background: theme.colors.whiteAlpha.a03,
-                border: `1px solid ${theme.colors.borderLight}`,
-                padding: "2rem",
-                borderRadius: "2rem",
+                padding: "0.75rem 2rem",
+                borderRadius: "100px",
+                border: "none",
+                fontSize: "0.95rem",
+                fontWeight: 700,
+                background: "transparent",
+                color:
+                  billing === "yearly"
+                    ? theme.colors.textLight
+                    : theme.colors.textMuted,
+                cursor: "pointer",
+                transition: "color 0.4s ease",
+                position: "relative",
+                zIndex: 1,
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "baseline",
+                gap: "0.25rem",
               }}
             >
-              <h3
+              Yearly{" "}
+              <span
                 style={{
-                  fontSize: "1.5rem",
-                  fontFamily: theme.fonts.heading,
-                  fontWeight: 700,
-                  color: theme.colors.textLight,
+                  opacity: billing === "yearly" ? 1 : 0.6,
+                  fontSize: "0.8em",
                 }}
               >
-                Professional
-              </h3>
-              <p
-                style={{
-                  color: theme.colors.whiteAlpha.a70,
-                  marginTop: "0.5rem",
-                  fontSize: "0.9rem",
-                }}
-              >
-                Full visibility into every branch, every platform, every rupee.
-              </p>
-              <div
-                style={{
-                  margin: "2rem 0",
-                  padding: "1.5rem 0",
-                  borderTop: `1px solid ${theme.colors.borderLight}`,
-                  borderBottom: `1px solid ${theme.colors.borderLight}`,
-                }}
-              >
-                <p
-                  style={{
-                    color: theme.colors.textLight,
-                    fontSize: "2.5rem",
-                    fontFamily: theme.fonts.heading,
-                    fontWeight: 800,
-                  }}
-                >
-                  {billing === "yearly" ? "₹4,999" : "₹6,249"}
-                  <span
-                    style={{
-                      fontSize: "1rem",
-                      color: theme.colors.whiteAlpha.a60,
-                      fontWeight: 400,
-                    }}
-                  >
-                    /mo/outlet
-                  </span>
-                </p>
-                <p
-                  style={{
-                    color: theme.colors.secondaryMuted,
-                    fontSize: "0.75rem",
-                    marginTop: "0.25rem",
-                  }}
-                >
-                  Billed {billing === "yearly" ? "annually" : "monthly"} + 18%
-                  GST
-                </p>
-              </div>
-              <ul
-                style={{
-                  listStyle: "none",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.75rem",
-                  marginBottom: "2rem",
-                  padding: 0,
-                }}
-              >
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Everything in Growth
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Payout Reconciliation
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Advanced Supplier Mgmt
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Custom Roles & Audit Logs
-                </li>
-                <li
-                  style={{
-                    color: theme.colors.whiteAlpha.a90,
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: theme.colors.accent,
-                      fontWeight: "bold",
-                      marginRight: "0.5rem",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ✓
-                  </span>
-                  Dedicated Account Manager
-                </li>
-              </ul>
-              <Link
-                href="/#demo-form"
-                className="btn-outline-pill"
-                style={{
-                  display: "block",
-                  textAlign: "center",
-                  color: theme.colors.textLight,
-                  borderColor: theme.colors.borderLight,
-                }}
-              >
-                Contact Sales
-              </Link>
-            </div>
+                (-20%)
+              </span>
+            </button>
           </div>
         </div>
-      </section>
 
-    </>
+        {/* Pricing Panel Container */}
+        <div
+          className="fade-up"
+          style={{
+            background:
+              "linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            borderRadius: "32px",
+            padding: "1rem",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "1rem",
+            boxShadow: "0 30px 60px -15px rgba(0,0,0,0.5)",
+            backdropFilter: "blur(24px)",
+          }}
+        >
+          {PRICING_PLANS.map((plan) => (
+            <div
+              key={plan.name}
+              style={{
+                background: plan.isPopular
+                  ? "rgba(255,255,255,0.03)"
+                  : "transparent",
+                border: plan.isPopular
+                  ? `1px solid ${theme.colors.accent}40`
+                  : "1px solid transparent",
+                borderRadius: "24px",
+                padding: "3rem 2rem",
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                transition:
+                  "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease",
+              }}
+              onMouseEnter={(e) => {
+                if (!plan.isPopular)
+                  e.currentTarget.style.background = "rgba(255,255,255,0.02)";
+              }}
+              onMouseLeave={(e) => {
+                if (!plan.isPopular)
+                  e.currentTarget.style.background = "transparent";
+              }}
+            >
+              {plan.isPopular && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    background: theme.colors.accent,
+                    color: theme.colors.textLight,
+                    padding: "0.35rem 1.25rem",
+                    borderRadius: "100px",
+                    fontSize: "0.75rem",
+                    fontWeight: 800,
+                    letterSpacing: "0.1em",
+                    whiteSpace: "nowrap",
+                    boxShadow: `0 4px 15px ${theme.colors.accent}60`,
+                  }}
+                >
+                  MOST POPULAR
+                </div>
+              )}
+
+              <h3
+                style={{
+                  fontSize: "1.5rem",
+                  fontFamily: theme.fonts.heading,
+                  fontWeight: 700,
+                  color: theme.colors.textLight,
+                  marginBottom: "0.75rem",
+                }}
+              >
+                {plan.name}
+              </h3>
+              <p
+                style={{
+                  color: theme.colors.textMuted,
+                  fontSize: "0.95rem",
+                  lineHeight: 1.5,
+                  minHeight: "45px",
+                }}
+              >
+                {plan.desc}
+              </p>
+
+              <div
+                style={{
+                  margin: "2.5rem 0",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.25rem",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    gap: "0.25rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: theme.colors.textLight,
+                      fontSize: "3rem",
+                      fontFamily: theme.fonts.heading,
+                      fontWeight: 800,
+                      lineHeight: 1,
+                    }}
+                  >
+                    ₹
+                    {billing === "yearly"
+                      ? plan.priceYearly
+                      : plan.priceMonthly}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "1rem",
+                      color: theme.colors.textMuted,
+                      fontWeight: 500,
+                    }}
+                  >
+                    {plan.suffix}
+                  </span>
+                </div>
+                <p
+                  style={{
+                    color: theme.colors.whiteAlpha.a50,
+                    fontSize: "0.8rem",
+                    fontWeight: 500,
+                  }}
+                >
+                  Billed {billing === "yearly" ? "annually" : "monthly"} + 18%
+                  GST
+                </p>
+              </div>
+
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: "0 0 3rem 0",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                  flexGrow: 1,
+                }}
+              >
+                {plan.features.map((feature, i) => (
+                  <li
+                    key={i}
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "0.75rem",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        borderRadius: "50%",
+                        background: `${theme.colors.accent}20`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        marginTop: "2px",
+                      }}
+                    >
+                      <Check
+                        size={12}
+                        color={theme.colors.accent}
+                        strokeWidth={3}
+                      />
+                    </div>
+                    <span
+                      style={{
+                        color: theme.colors.textLight,
+                        fontSize: "0.95rem",
+                        fontWeight: 500,
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href="/#demo-form"
+                style={{
+                  display: "block",
+                  textAlign: "center",
+                  padding: "1rem",
+                  borderRadius: "16px",
+                  fontWeight: 700,
+                  fontSize: "1rem",
+                  transition: "all 0.3s ease",
+                  background: plan.isPopular
+                    ? theme.colors.accent
+                    : "rgba(255,255,255,0.05)",
+                  color: theme.colors.textLight,
+                  border: plan.isPopular
+                    ? "none"
+                    : "1px solid rgba(255,255,255,0.1)",
+                  boxShadow: plan.isPopular
+                    ? `0 8px 20px -5px ${theme.colors.accent}60`
+                    : "none",
+                }}
+                onMouseEnter={(e) => {
+                  if (!plan.isPopular) {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+                  } else {
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!plan.isPopular) {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+                  } else {
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }
+                }}
+              >
+                {plan.btnText}
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

@@ -4,55 +4,163 @@ import Link from "next/link";
 import Image from "next/image";
 import { theme } from "@/config/theme";
 
+import {
+  Monitor,
+  Package,
+  Smartphone,
+  Grid,
+  ClipboardList,
+  BarChart3,
+  ChefHat,
+  ShieldCheck,
+  Store,
+  Cable,
+  Utensils,
+  IceCream,
+  UtensilsCrossed,
+  Croissant,
+  Coffee,
+  Beer,
+  Pizza,
+  Cloud,
+  Building,
+  BookOpen,
+  CircleHelp,
+} from "lucide-react";
+
 const NAV = [
   {
-    label: "Products",
+    label: "POSS",
     dropdown: [
-      { label: "Billing & POS", href: "/products/billing-pos", icon: "🖥️" },
+      {
+        label: "Billing & POS",
+        href: "/products/billing-pos",
+        icon: <Monitor size={18} strokeWidth={2} />,
+        desc: "Fast & reliable billing",
+      },
       {
         label: "Inventory",
         href: "/products/inventory-management",
-        icon: "📦",
+        icon: <Package size={18} strokeWidth={2} />,
+        desc: "Track stock & ingredients",
       },
       {
         label: "Online Ordering & Recon",
         href: "/products/online-ordering-reconciliation",
-        icon: "📱",
+        icon: <Smartphone size={18} strokeWidth={2} />,
+        desc: "Manage Swiggy & Zomato",
       },
       {
         label: "Table & Floor Mgmt",
         href: "/products/table-floor-management",
-        icon: "🪑",
+        icon: <Grid size={18} strokeWidth={2} />,
+        desc: "Visual floor plans",
       },
       {
         label: "Menu Management",
         href: "/products/menu-management",
-        icon: "📋",
+        icon: <ClipboardList size={18} strokeWidth={2} />,
+        desc: "Centralized menu control",
       },
-      { label: "Reporting", href: "/products/reports", icon: "📊" },
+      {
+        label: "Reporting",
+        href: "/products/reports",
+        icon: <BarChart3 size={18} strokeWidth={2} />,
+        desc: "Real-time analytics",
+      },
       {
         label: "KOT / Kitchen Display",
         href: "/products/kot-kitchen-display",
-        icon: "🍳",
+        icon: <ChefHat size={18} strokeWidth={2} />,
+        desc: "Streamline kitchen ops",
       },
-      { label: "Platform & Security", href: "/products/platform", icon: "🛡️" },
+      {
+        label: "Platform & Security",
+        href: "/products/platform",
+        icon: <ShieldCheck size={18} strokeWidth={2} />,
+        desc: "Secure role-based access",
+      },
     ],
   },
   {
-    label: "Outlet Types",
+    label: "Add ons",
     dropdown: [
       {
-        label: "Restaurant (Fine Dine / QSR)",
-        href: "/outlets/restaurant",
-        icon: "🍽️",
+        label: "Marketplace",
+        href: "/add-ons/marketplace",
+        icon: <Store size={18} strokeWidth={2} />,
+        desc: "Explore third-party integrations",
       },
-      { label: "Café", href: "/outlets/cafe", icon: "☕" },
-      { label: "Cloud Kitchen", href: "/outlets/cloud-kitchen", icon: "🛵" },
-      { label: "Bar & Lounge (soon)", href: "/outlets/bar-lounge", icon: "🍻" },
       {
-        label: "Retail & Grocery (soon)",
-        href: "/outlets/retail-grocery",
-        icon: "🛒",
+        label: "Integration",
+        href: "/add-ons/integration",
+        icon: <Cable size={18} strokeWidth={2} />,
+        desc: "Connect your favourite tools",
+      },
+    ],
+  },
+  {
+    label: "Outlet types",
+    dropdown: [
+      {
+        label: "Fine dine",
+        href: "/outlets/restaurant",
+        icon: <Utensils size={18} strokeWidth={2} />,
+        desc: "Table-side service",
+      },
+      {
+        label: "Ice cream & desserts",
+        href: "/outlets/dessert",
+        icon: <IceCream size={18} strokeWidth={2} />,
+        desc: "Quick sweet treats",
+      },
+      {
+        label: "QSR",
+        href: "/outlets/qsr",
+        icon: <UtensilsCrossed size={18} strokeWidth={2} />,
+        desc: "Fast-paced counters",
+      },
+      {
+        label: "Bakery",
+        href: "/outlets/bakery",
+        icon: <Croissant size={18} strokeWidth={2} />,
+        desc: "Fresh baked goods",
+      },
+      {
+        label: "Cafe",
+        href: "/outlets/cafe",
+        icon: <Coffee size={18} strokeWidth={2} />,
+        desc: "Coffee & snacks",
+      },
+      {
+        label: "Bar & brewery",
+        href: "/outlets/bar-lounge",
+        icon: <Beer size={18} strokeWidth={2} />,
+        desc: "Drinks & nightlife",
+      },
+      {
+        label: "Food court",
+        href: "/outlets/food-court",
+        icon: <Store size={18} strokeWidth={2} />,
+        desc: "Shared seating",
+      },
+      {
+        label: "Pizzeria",
+        href: "/outlets/pizzeria",
+        icon: <Pizza size={18} strokeWidth={2} />,
+        desc: "Pizza & slices",
+      },
+      {
+        label: "Cloud kitchen",
+        href: "/outlets/cloud-kitchen",
+        icon: <Cloud size={18} strokeWidth={2} />,
+        desc: "Delivery-only",
+      },
+      {
+        label: "Large chain",
+        href: "/outlets/chain",
+        icon: <Building size={18} strokeWidth={2} />,
+        desc: "Multi-outlet brands",
       },
     ],
   },
@@ -60,16 +168,18 @@ const NAV = [
   {
     label: "Resources",
     dropdown: [
-      { label: "Blog", href: "/blog", icon: "📝" },
-      { label: "Help Center", href: "/help-center", icon: "❓" },
-      { label: "Free Tools (soon)", href: "/free-tools", icon: "🛠️" },
-    ],
-  },
-  {
-    label: "Company",
-    dropdown: [
-      { label: "About Us", href: "/about-us", icon: "🏢" },
-      { label: "Careers", href: "/careers", icon: "🚀" },
+      {
+        label: "Blog",
+        href: "/blog",
+        icon: <BookOpen size={18} strokeWidth={2} />,
+        desc: "Articles & guides",
+      },
+      {
+        label: "Help Center",
+        href: "/help-center",
+        icon: <CircleHelp size={18} strokeWidth={2} />,
+        desc: "Support & FAQs",
+      },
     ],
   },
 ];
@@ -77,33 +187,28 @@ const NAV = [
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const navRef = useRef<HTMLDivElement>(null);
+  // Using pure CSS for desktop hover states to match LottieFiles premium UI,
+  // but we keep track of which dropdown is tapped on mobile/touch devices.
+  const [activeTouchDropdown, setActiveTouchDropdown] = useState<string | null>(
+    null,
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll, { passive: true });
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(event.target as Node)) {
-        setOpenDropdown(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const toggleDropdown = (label: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    setOpenDropdown(openDropdown === label ? null : label);
+  const handleTouchDropdown = (label: string, e: React.MouseEvent) => {
+    // Only intercept for touch behavior
+    if (window.matchMedia("(hover: none)").matches) {
+      e.preventDefault();
+      setActiveTouchDropdown(activeTouchDropdown === label ? null : label);
+    }
   };
 
   const closeMenu = () => {
-    setOpenDropdown(null);
+    setActiveTouchDropdown(null);
     setMobileOpen(false);
   };
 
@@ -136,7 +241,6 @@ export function Header() {
             height: "72px",
             padding: theme.spacing.containerPadding,
           }}
-          ref={navRef}
         >
           <Link
             href="/"
@@ -163,13 +267,14 @@ export function Header() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "2rem",
+              gap: "0.5rem", // Lottiefiles has less gap, items have padding
               height: "100%",
             }}
           >
             {NAV.map((item) => (
               <div
                 key={item.label}
+                className={item.dropdown ? "navbar__list" : ""}
                 style={{
                   position: "relative",
                   height: "100%",
@@ -180,27 +285,12 @@ export function Header() {
                 {item.dropdown ? (
                   <>
                     <button
-                      onClick={(e) => toggleDropdown(item.label, e)}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        color:
-                          openDropdown === item.label
-                            ? theme.colors.accent
-                            : theme.colors.textDark,
-                        fontFamily: theme.fonts.body,
-                        fontSize: "0.95rem",
-                        fontWeight: 600,
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.25rem",
-                        cursor: "pointer",
-                        transition: "color 0.2s",
-                        padding: 0,
-                      }}
+                      className="navbar__link"
+                      onClick={(e) => handleTouchDropdown(item.label, e)}
                     >
                       {item.label}
                       <svg
+                        className="tringle-icon"
                         width="12"
                         height="12"
                         viewBox="0 0 24 24"
@@ -208,216 +298,213 @@ export function Header() {
                         stroke="currentColor"
                         strokeWidth="3"
                         strokeLinecap="round"
-                        style={{
-                          transform:
-                            openDropdown === item.label
-                              ? "rotate(180deg)"
-                              : "rotate(0deg)",
-                          transition: "transform 0.2s ease",
-                        }}
+                        strokeLinejoin="round"
                       >
                         <polyline points="6 9 12 15 18 9"></polyline>
                       </svg>
                     </button>
 
-                    {openDropdown === item.label && (
-                      <div
-                        style={{
-                          position: "absolute",
-                          top: "100%",
-                          left:
-                            item.label === "Products" ||
-                            item.label === "Outlet Types"
-                              ? "-100%"
-                              : "50%",
-                          transform:
-                            item.label === "Products" ||
-                            item.label === "Outlet Types"
-                              ? "translateY(0)"
-                              : "translateX(-50%) translateY(0)",
-                          background: theme.colors.bgSurface,
-                          borderRadius: theme.radii.card,
-                          boxShadow: theme.shadows.lg,
-                          width:
-                            item.label === "Products" ||
-                            item.label === "Outlet Types"
-                              ? "800px"
-                              : "220px",
-                          padding:
-                            item.label === "Products" ||
-                            item.label === "Outlet Types"
-                              ? "1.5rem"
-                              : "0.75rem",
-                          zIndex: 1000,
-                          animation: "fadeInUp 0.2s ease",
-                        }}
-                      >
-                        {item.label === "Products" ||
-                        item.label === "Outlet Types" ? (
+                    <div
+                      className={`navbar__submenu_div ${activeTouchDropdown === item.label ? "active-touch" : ""}`}
+                      style={{
+                        width:
+                          item.label === "POSS"
+                            ? "750px"
+                            : item.label === "Outlet types"
+                              ? "550px"
+                              : "250px",
+                        padding:
+                          item.label === "POSS" || item.label === "Outlet types"
+                            ? "1.5rem"
+                            : "0.5rem",
+                      }}
+                    >
+                      {/* Invisible bridge to prevent hover loss */}
+                      <div className="navbar__submenu-bridge" />
+
+                      {item.label === "POSS" ? (
+                        <div
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr",
+                            gap: "1.5rem",
+                          }}
+                        >
                           <div
                             style={{
-                              display: "grid",
-                              gridTemplateColumns: "repeat(2, 1fr) 250px",
-                              gap: "2rem",
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "0.25rem",
                             }}
                           >
-                            <div>
-                              <h4
-                                style={{
-                                  color: theme.colors.accent,
-                                  fontSize: "0.85rem",
-                                  textTransform: "uppercase",
-                                  letterSpacing: "0.05em",
-                                  marginBottom: "1rem",
-                                  fontWeight: 800,
-                                }}
-                              >
-                                {item.label}
-                              </h4>
-                              <div
-                                style={{
-                                  display: "flex",
-                                  flexDirection: "column",
-                                  gap: "0.25rem",
-                                }}
-                              >
-                                {item.dropdown
-                                  .slice(0, Math.ceil(item.dropdown.length / 2))
-                                  .map((sub) => (
-                                    <Link
-                                      key={sub.label}
-                                      href={sub.href}
-                                      onClick={closeMenu}
-                                      className="desktop-dropdown-link"
-                                    >
-                                      <span style={{ fontSize: "1.2rem" }}>
-                                        {sub.icon}
-                                      </span>
-                                      <span>{sub.label}</span>
-                                    </Link>
-                                  ))}
-                              </div>
-                            </div>
-                            <div>
-                              <h4
-                                style={{
-                                  color: "transparent",
-                                  fontSize: "0.85rem",
-                                  marginBottom: "1rem",
-                                }}
-                              >
-                                &nbsp;
-                              </h4>
-                              <div
-                                style={{
-                                  display: "flex",
-                                  flexDirection: "column",
-                                  gap: "0.25rem",
-                                }}
-                              >
-                                {item.dropdown
-                                  .slice(Math.ceil(item.dropdown.length / 2))
-                                  .map((sub) => (
-                                    <Link
-                                      key={sub.label}
-                                      href={sub.href}
-                                      onClick={closeMenu}
-                                      className="desktop-dropdown-link"
-                                    >
-                                      <span style={{ fontSize: "1.2rem" }}>
-                                        {sub.icon}
-                                      </span>
-                                      <span>{sub.label}</span>
-                                    </Link>
-                                  ))}
-                              </div>
-                            </div>
-                            <div
-                              style={{
-                                background: theme.colors.secondaryLight,
-                                padding: "1.5rem",
-                                borderRadius: theme.radii.button,
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "center",
-                                alignItems: "flex-start",
-                                border: `1px solid ${theme.colors.border}`,
-                              }}
-                            >
-                              <h4
-                                style={{
-                                  fontSize: "1.1rem",
-                                  fontWeight: 800,
-                                  marginBottom: "0.5rem",
-                                  color: theme.colors.textDark,
-                                  fontFamily: theme.fonts.heading,
-                                }}
-                              >
-                                See it in action
-                              </h4>
-                              <p
-                                style={{
-                                  fontSize: "0.85rem",
-                                  color: theme.colors.textMuted,
-                                  marginBottom: "1.25rem",
-                                  lineHeight: 1.5,
-                                  fontFamily: theme.fonts.body,
-                                }}
-                              >
-                                Book a live demo with our experts and see how
-                                BillBite transforms operations.
-                              </p>
-                              <Link
-                                href="/#demo-form"
-                                onClick={closeMenu}
-                                className="btn-primary"
-                                style={{
-                                  width: "100%",
-                                  textAlign: "center",
-                                  padding: "0.6rem",
-                                  fontSize: "0.9rem",
-                                  borderRadius: theme.radii.button,
-                                  fontFamily: theme.fonts.body,
-                                }}
-                              >
-                                Book a Demo
-                              </Link>
-                            </div>
+                            {item.dropdown
+                              .slice(0, Math.ceil(item.dropdown.length / 2))
+                              .map((sub) => (
+                                <Link
+                                  key={sub.label}
+                                  href={sub.href}
+                                  onClick={closeMenu}
+                                  className="navbar__sublink"
+                                >
+                                  <span className="sublink-icon">
+                                    {sub.icon}
+                                  </span>
+                                  <span className="sublink-text-wrapper">
+                                    <span className="sublink-text">
+                                      {sub.label}
+                                    </span>
+                                    <span className="sublink-desc">
+                                      {sub.desc}
+                                    </span>
+                                  </span>
+                                  <svg
+                                    className="right-arrow-icon"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  >
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                  </svg>
+                                </Link>
+                              ))}
                           </div>
-                        ) : (
                           <div
-                            style={{ display: "flex", flexDirection: "column" }}
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "0.25rem",
+                            }}
                           >
-                            {item.dropdown.map((sub) => (
-                              <Link
-                                key={sub.label}
-                                href={sub.href}
-                                onClick={closeMenu}
-                                className="desktop-dropdown-link"
-                              >
-                                <span style={{ fontSize: "1.1rem" }}>
-                                  {sub.icon}
-                                </span>
-                                <span>{sub.label}</span>
-                              </Link>
-                            ))}
+                            {item.dropdown
+                              .slice(Math.ceil(item.dropdown.length / 2))
+                              .map((sub) => (
+                                <Link
+                                  key={sub.label}
+                                  href={sub.href}
+                                  onClick={closeMenu}
+                                  className="navbar__sublink"
+                                >
+                                  <span className="sublink-icon">
+                                    {sub.icon}
+                                  </span>
+                                  <span className="sublink-text-wrapper">
+                                    <span className="sublink-text">
+                                      {sub.label}
+                                    </span>
+                                    <span className="sublink-desc">
+                                      {sub.desc}
+                                    </span>
+                                  </span>
+                                  <svg
+                                    className="right-arrow-icon"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  >
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                  </svg>
+                                </Link>
+                              ))}
                           </div>
-                        )}
-                      </div>
-                    )}
+                        </div>
+                      ) : item.label === "Outlet types" ? (
+                        <div
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr",
+                            // gap: "1.5rem",
+                          }}
+                        >
+                          {item.dropdown.map((sub) => (
+                            <Link
+                              key={sub.label}
+                              href={sub.href}
+                              onClick={closeMenu}
+                              className="navbar__sublink"
+                            >
+                              <span className="sublink-icon">{sub.icon}</span>
+                              <span className="sublink-text-wrapper">
+                                <span className="sublink-text">
+                                  {sub.label}
+                                </span>
+                                <span className="sublink-desc">{sub.desc}</span>
+                              </span>
+                              <svg
+                                className="right-arrow-icon"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                              </svg>
+                            </Link>
+                          ))}
+                        </div>
+                      ) : (
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            // gap: "0.25rem",
+                          }}
+                        >
+                          {item.dropdown.map((sub) => (
+                            <Link
+                              key={sub.label}
+                              href={sub.href}
+                              onClick={closeMenu}
+                              className="navbar__sublink"
+                            >
+                              <span className="sublink-icon">{sub.icon}</span>
+                              <span className="sublink-text-wrapper">
+                                <span className="sublink-text">
+                                  {sub.label}
+                                </span>
+                                <span className="sublink-desc">{sub.desc}</span>
+                              </span>
+                              <svg
+                                className="right-arrow-icon"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                              </svg>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </>
                 ) : (
                   <Link
                     href={item.href!}
                     onClick={closeMenu}
-                    style={{
-                      color: theme.colors.textDark,
-                      fontFamily: theme.fonts.body,
-                      fontSize: "0.95rem",
-                      fontWeight: 600,
-                      textDecoration: "none",
-                      transition: "color 0.2s",
-                    }}
+                    className="navbar__link"
                   >
                     {item.label}
                   </Link>
@@ -634,32 +721,156 @@ export function Header() {
           .desktop-cta { display: inline-flex !important; }
         }
 
-        .desktop-dropdown-link {
+        /* Lottiefiles Premium Header Styles */
+        .navbar__link {
+          background: none;
+          border: none;
+          color: #374151; /* Dark grey */
+          font-family: ${theme.fonts.body};
+          font-size: 0.95rem;
+          font-weight: 600;
           display: flex;
           align-items: center;
-          gap: 0.75rem;
-          padding: 0.75rem 0.75rem;
-          color: ${theme.colors.textDark};
+          gap: 0.4rem;
+          cursor: pointer;
+          transition: all 0.2s;
+          padding: 0.5rem 1rem;
+          border-radius: 8px;
           text-decoration: none;
-          border-radius: ${theme.radii.button};
-          transition: background 0.15s, color 0.15s;
-          font-weight: 600;
-          font-size: 0.95rem;
-          font-family: ${theme.fonts.body};
         }
 
-        .desktop-dropdown-link:hover {
-          background: ${theme.colors.secondaryLight};
+        .navbar__list:hover .navbar__link,
+        .navbar__link:hover {
+          color: #000000;
+          background: #f3f4f6; /* Very light subtle grey on hover like Lottiefiles */
+        }
+
+        .tringle-icon {
+          transition: transform 0.2s ease;
+          color: #6b7280;
+        }
+
+        .navbar__list:hover .tringle-icon {
+          transform: rotate(180deg);
+          color: #000000;
+        }
+
+        .navbar__submenu_div {
+          position: absolute;
+          top: 100%;
+          left: -1rem; /* Adjust slightly left so padding aligns with text */
+          transform: translateY(15px);
+          background: #ffffff;
+          border-radius: 16px; /* Smooth rounded corners */
+          box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.05); /* Premium shadow + subtle border */
+          z-index: 1000;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Touch activation class */
+        .navbar__submenu_div.active-touch {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(5px);
+        }
+
+        /* Desktop pure CSS hover */
+        @media (hover: hover) {
+          .navbar__list:hover .navbar__submenu_div {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(5px);
+          }
+        }
+
+        .navbar__submenu-bridge {
+          position: absolute;
+          top: -20px;
+          left: 0;
+          width: 100%;
+          height: 20px;
+          background: transparent;
+        }
+
+        .navbar__sublink {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          padding: 0.85rem 1rem;
+          color: #374151;
+          text-decoration: none;
+          border-radius: 12px;
+          transition: all 0.2s ease;
+          font-weight: 500;
+          font-size: 0.95rem;
+          font-family: ${theme.fonts.body};
+          position: relative;
+        }
+
+        .sublink-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          background: #f9fafb; /* Light subtle grey bg for icons */
+          color: #4b5563; /* Icon color */
+          transition: all 0.2s ease;
+          flex-shrink: 0;
+        }
+        
+        .navbar__sublink:hover .sublink-icon {
+          background: #ffffff; /* Pop out on hover */
           color: ${theme.colors.accent};
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .sublink-text-wrapper {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 0.1rem;
+        }
+
+        .sublink-text {
+          font-weight: 600;
+          color: #111827;
+          font-size: 0.95rem;
+        }
+
+        .sublink-desc {
+          font-size: 0.8rem;
+          color: #6b7280;
+          font-weight: 400;
+          line-height: 1.3;
+        }
+
+        .navbar__sublink:hover {
+          background-color: #f3f4f6; /* Lottiefiles hover grey */
+        }
+
+        .right-arrow-icon {
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          transform: translateX(-10px);
+          color: #9ca3af;
+          align-self: center;
+          margin-left: auto;
+        }
+
+        .navbar__sublink:hover .right-arrow-icon {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(0);
+          color: #111827;
         }
 
         details > summary::-webkit-details-marker {
           display: none;
-        }
-
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(10px) translateX(var(--translate-x, 0)); }
-          to   { opacity: 1; transform: translateY(0) translateX(var(--translate-x, 0)); }
         }
 
         @keyframes slideInLeft {

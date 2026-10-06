@@ -8,7 +8,7 @@ interface ProductPageProps {
   title: string;
   subtitle: string;
   heroImage?: string;
-  features: { title: string; desc: string; icon: string }[];
+  features: { title: string; desc: string; icon: React.ReactNode }[];
   benefits: { title: string; desc: string }[];
 }
 

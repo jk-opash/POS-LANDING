@@ -77,55 +77,87 @@ export function Footer() {
 
       <div
         className="pp-wrap"
-        style={{ paddingTop: "6rem", paddingBottom: "3rem" }}
+        style={{ paddingTop: "3rem", paddingBottom: "3rem" }}
       >
         {/* =======================
             TOP SECTION: CTA
         ======================= */}
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-            marginBottom: "5rem",
-            backgroundColor: theme.colors.bgLight,
-            padding: "5rem 2rem",
+            position: "relative",
+            width: "100%",
+            background: theme.colors.bgDark,
             borderRadius: "32px",
-            boxShadow: theme.shadows.lg,
+            padding: "4rem clamp(2rem, 5vw, 5rem)",
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "3rem",
+            boxShadow: "0 30px 60px -15px rgba(0,0,0,0.3)",
+            border: "1px solid rgba(255,255,255,0.05)",
+            overflow: "hidden",
+            marginBottom: "3rem",
           }}
           className="fade-up"
         >
-          <h2
-            style={{
-              fontFamily: theme.fonts.heading,
-              fontWeight: 800,
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
-              color: theme.colors.textDark,
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Ready to upgrade <br /> your restaurant?
-          </h2>
-          <p
-            style={{
-              color: theme.colors.textMuted,
-              fontSize: "1.125rem",
-              maxWidth: "500px",
-              marginBottom: "2.5rem",
-            }}
-          >
-            Join the fastest-growing network of food businesses running their
-            entire operation on BillBite.
-          </p>
+          {/* Animated Glow Backdrop */}
           <div
             style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              width: "50%",
+              background: `radial-gradient(circle at 80% 50%, ${theme.colors.accent}30 0%, transparent 70%)`,
+              filter: "blur(40px)",
+              pointerEvents: "none",
+            }}
+          />
+
+          <div
+            style={{
+              position: "relative",
+              zIndex: 1,
+              flex: "1 1 400px",
+              textAlign: "left",
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: theme.fonts.heading,
+                fontWeight: 800,
+                fontSize: "clamp(2.5rem, 4vw, 4rem)",
+                color: theme.colors.textLight,
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.5rem",
+              }}
+            >
+              Ready to upgrade <br /> your restaurant?
+            </h2>
+            <p
+              style={{
+                color: theme.colors.whiteAlpha.a70,
+                fontSize: "1.125rem",
+                maxWidth: "450px",
+                lineHeight: 1.6,
+              }}
+            >
+              Join the fastest-growing network of food businesses running their
+              entire operation seamlessly on BillBite.
+            </p>
+          </div>
+
+          <div
+            style={{
+              position: "relative",
+              zIndex: 1,
               display: "flex",
               gap: "1rem",
+              flexDirection: "row",
               flexWrap: "wrap",
-              justifyContent: "center",
             }}
           >
             <Button
@@ -134,33 +166,53 @@ export function Footer() {
               shape="pill"
               size="lg"
               className="group"
-              style={{ gap: "0.5rem" }}
+              style={{
+                gap: "0.5rem",
+                height: "64px",
+                padding: "0 2.5rem",
+                fontSize: "1.1rem",
+                boxShadow: `0 10px 30px -10px ${theme.colors.accent}`,
+              }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = `0 10px 25px -5px ${theme.colors.accent}80`;
+                e.currentTarget.style.boxShadow = `0 20px 40px -10px ${theme.colors.accent}`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = `0 10px 30px -10px ${theme.colors.accent}`;
               }}
             >
               Get a Free Demo
               <ArrowRight
-                size={18}
+                size={20}
                 className="transition-transform group-hover:translate-x-1"
               />
             </Button>
+
             <Button
               href="/contact"
               variant="outline"
               shape="pill"
               size="lg"
               style={{
-                background: theme.colors.blackAlpha.a05,
-                borderColor: theme.colors.blackAlpha.a10,
-                color: theme.colors.textDark,
+                height: "64px",
+                padding: "0 2.5rem",
+                fontSize: "1.1rem",
+                background: "rgba(255,255,255,0.05)",
+                borderColor: "rgba(255,255,255,0.1)",
+                color: theme.colors.textLight,
+                backdropFilter: "blur(10px)",
+                transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = theme.colors.blackAlpha.a10;
+                e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+                e.currentTarget.style.transform = "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = theme.colors.blackAlpha.a05;
+                e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               Contact Sales
@@ -174,24 +226,25 @@ export function Footer() {
             width: "100%",
             height: "1px",
             background: theme.colors.whiteAlpha.a10,
-            marginBottom: "5rem",
+            marginBottom: "3rem",
           }}
         />
 
-        {/* =======================
-            MIDDLE SECTION: LINKS
-        ======================= */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "4rem",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
             marginBottom: "5rem",
           }}
         >
-          {/* Logo & Contact Info */}
           <div
-            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+            }}
           >
             <Link href="/" style={{ display: "inline-block" }}>
               <Image
@@ -213,57 +266,68 @@ export function Footer() {
               The all-in-one ecosystem for modern food businesses. Built for
               speed, scaled for growth.
             </p>
-            <div
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.75rem",
+              marginTop: "1rem",
+            }}
+          >
+            <a
+              href="tel:+919876543210"
               style={{
                 display: "flex",
-                flexDirection: "column",
-                gap: "0.75rem",
-                marginTop: "1rem",
+                alignItems: "center",
+                gap: "0.5rem",
+                color: theme.colors.whiteAlpha.a80,
+                fontSize: "0.9rem",
+                fontWeight: 500,
+                transition: "color 0.2s",
               }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = theme.colors.accent)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = theme.colors.whiteAlpha.a80)
+              }
             >
-              <a
-                href="tel:+919876543210"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  color: theme.colors.whiteAlpha.a80,
-                  fontSize: "0.9rem",
-                  fontWeight: 500,
-                  transition: "color 0.2s",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = theme.colors.accent)
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = theme.colors.whiteAlpha.a80)
-                }
-              >
-                <Phone size={16} /> (+91) 98765 43210
-              </a>
-              <a
-                href="mailto:hello@billbite.in"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  color: theme.colors.whiteAlpha.a80,
-                  fontSize: "0.9rem",
-                  fontWeight: 500,
-                  transition: "color 0.2s",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = theme.colors.accent)
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = theme.colors.whiteAlpha.a80)
-                }
-              >
-                <Mail size={16} /> hello@billbite.in
-              </a>
-            </div>
+              <Phone size={16} /> (+91) 98765 43210
+            </a>
+            <a
+              href="mailto:hello@billbite.in"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                color: theme.colors.whiteAlpha.a80,
+                fontSize: "0.9rem",
+                fontWeight: 500,
+                transition: "color 0.2s",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = theme.colors.accent)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = theme.colors.whiteAlpha.a80)
+              }
+            >
+              <Mail size={16} /> hello@billbite.in
+            </a>
           </div>
-
+        </div>
+        {/* =======================
+            MIDDLE SECTION: LINKS
+        ======================= */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "3rem",
+            marginBottom: "5rem",
+          }}
+        >
           {/* Link Columns */}
           {FOOTER_COLS.map((col) => (
             <div key={col.title}>
@@ -322,132 +386,34 @@ export function Footer() {
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "row",
+            flexWrap: "wrap-reverse",
+            justifyContent: "space-between",
+            alignItems: "center",
             gap: "2rem",
             borderTop: `1px solid ${theme.colors.whiteAlpha.a10}`,
             paddingTop: "2rem",
           }}
         >
+          {/* Left: Copyright & Legal */}
           <div
             style={{
               display: "flex",
               flexWrap: "wrap",
-              justifyContent: "space-between",
               alignItems: "center",
               gap: "2rem",
             }}
           >
-            {/* Socials */}
-            <div style={{ display: "flex", gap: "1rem" }}>
-              {[
-                {
-                  icon: (
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                      <rect x="2" y="9" width="4" height="12" />
-                      <circle cx="4" cy="4" r="2" />
-                    </svg>
-                  ),
-                  href: "#",
-                },
-                {
-                  icon: (
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                    </svg>
-                  ),
-                  href: "#",
-                },
-                {
-                  icon: (
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z" />
-                      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-                    </svg>
-                  ),
-                  href: "#",
-                },
-                {
-                  icon: (
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                    </svg>
-                  ),
-                  href: "#",
-                },
-              ].map((s, i) => (
-                <a
-                  key={i}
-                  href={s.href}
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "50%",
-                    background: theme.colors.whiteAlpha.a05,
-                    border: `1px solid ${theme.colors.whiteAlpha.a10}`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: theme.colors.whiteAlpha.a80,
-                    transition: "all 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = theme.colors.accent;
-                    e.currentTarget.style.color = theme.colors.textLight;
-                    e.currentTarget.style.borderColor = theme.colors.accent;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background =
-                      theme.colors.whiteAlpha.a05;
-                    e.currentTarget.style.color = theme.colors.whiteAlpha.a80;
-                    e.currentTarget.style.borderColor =
-                      theme.colors.whiteAlpha.a10;
-                  }}
-                >
-                  {s.icon}
-                </a>
-              ))}
-            </div>
+            <p
+              style={{
+                color: theme.colors.whiteAlpha.a60,
+                fontSize: "0.875rem",
+                margin: 0,
+              }}
+            >
+              © {new Date().getFullYear()} BillBite. All rights reserved.
+            </p>
 
-            {/* Legal Links */}
             <div
               style={{
                 display: "flex",
@@ -466,15 +432,16 @@ export function Footer() {
                   key={l.label}
                   href={l.href}
                   style={{
-                    color: theme.colors.whiteAlpha.a50,
-                    fontSize: "0.85rem",
-                    transition: "color 0.2s",
+                    color: theme.colors.whiteAlpha.a60,
+                    fontSize: "0.875rem",
+                    transition: "color 0.2s ease",
+                    textDecoration: "none",
                   }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = theme.colors.textLight)
                   }
                   onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = theme.colors.whiteAlpha.a50)
+                    (e.currentTarget.style.color = theme.colors.whiteAlpha.a60)
                   }
                 >
                   {l.label}
@@ -483,15 +450,83 @@ export function Footer() {
             </div>
           </div>
 
-          <p
-            style={{
-              color: theme.colors.whiteAlpha.a50,
-              fontSize: "0.85rem",
-              textAlign: "center",
-            }}
-          >
-            © {new Date().getFullYear()} BillBite. All rights reserved.
-          </p>
+          {/* Right: Socials */}
+          <div style={{ display: "flex", gap: "0.75rem" }}>
+            {[
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                ),
+                href: "#",
+                label: "LinkedIn",
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                ),
+                href: "#",
+                label: "Instagram",
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z" />
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                  </svg>
+                ),
+                href: "#",
+                label: "YouTube",
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                  </svg>
+                ),
+                href: "#",
+                label: "X (Twitter)",
+              },
+            ].map((s, i) => (
+              <a
+                key={i}
+                href={s.href}
+                aria-label={s.label}
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  background: theme.colors.whiteAlpha.a05,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: theme.colors.whiteAlpha.a80,
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = theme.colors.accent;
+                  e.currentTarget.style.color = theme.colors.textLight;
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = `0 4px 12px ${theme.colors.accent}60`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = theme.colors.whiteAlpha.a05;
+                  e.currentTarget.style.color = theme.colors.whiteAlpha.a80;
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

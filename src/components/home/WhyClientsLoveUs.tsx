@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { theme } from "@/config/theme";
+import {
+  Utensils,
+  Smartphone,
+  Users,
+  Truck,
+  Wallet,
+  TrendingUp,
+  Zap,
+  X,
+  Check,
+} from "lucide-react";
 
 export default function WhyClientsLoveUs() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -196,7 +207,7 @@ export default function WhyClientsLoveUs() {
                     >
                       {tag}
                     </span>
-                  )
+                  ),
                 )}
               </div>
             </div>
@@ -209,15 +220,15 @@ export default function WhyClientsLoveUs() {
                 width: "55%",
                 height: "80%",
                 transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
-                transform:
-                  hoveredCard === 1
-                    ? "scale(1.05) translate(-10px, -10px)"
-                    : "scale(1)",
+                // transform:
+                //   hoveredCard === 1
+                //     ? "scale(1.05) translate(-10px, -10px)"
+                //     : "scale(1)",
                 zIndex: 1,
               }}
             >
               <Image
-                src="/images/bento/pos_billing.jpg"
+                src="/images/bento/pos_billing.png"
                 alt="POS Billing"
                 fill
                 style={{
@@ -283,19 +294,19 @@ export default function WhyClientsLoveUs() {
                 minHeight: "250px",
                 marginTop: "2rem",
                 transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
-                transform: hoveredCard === 2 ? "scale(1.05)" : "scale(1)",
+                // transform: hoveredCard === 2 ? "scale(1.05)" : "scale(1)",
                 zIndex: 1,
               }}
             >
               <Image
-                src="/images/bento/inventory.jpg"
+                src="/images/bento/inventory.png"
                 alt="Inventory Control"
                 fill
                 style={{
                   objectFit: "contain",
                   objectPosition: "bottom center",
                   mixBlendMode: "lighten",
-                  opacity: 0.9,
+                  // opacity: 0.9,
                 }}
               />
             </div>
@@ -355,12 +366,12 @@ export default function WhyClientsLoveUs() {
                 minHeight: "250px",
                 marginTop: "2rem",
                 transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
-                transform: hoveredCard === 3 ? "scale(1.05)" : "scale(1)",
+                // transform: hoveredCard === 3 ? "scale(1.05)" : "scale(1)",
                 zIndex: 1,
               }}
             >
               <Image
-                src="/images/bento/kitchen_ops.jpg"
+                src="/images/bento/kitchen_ops.png"
                 alt="Kitchen Operations"
                 fill
                 style={{
@@ -444,7 +455,7 @@ export default function WhyClientsLoveUs() {
                     >
                       {tag}
                     </span>
-                  )
+                  ),
                 )}
               </div>
             </div>
@@ -457,15 +468,15 @@ export default function WhyClientsLoveUs() {
                 width: "55%",
                 height: "80%",
                 transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
-                transform:
-                  hoveredCard === 4
-                    ? "scale(1.05) translate(-10px, -10px)"
-                    : "scale(1)",
+                // transform:
+                //   hoveredCard === 4
+                //     ? "scale(1.05) translate(-10px, -10px)"
+                //     : "scale(1)",
                 zIndex: 1,
               }}
             >
               <Image
-                src="/images/bento/business_management.jpg"
+                src="/images/bento/business_management.png"
                 alt="Business Management"
                 fill
                 style={{
@@ -564,7 +575,7 @@ export default function WhyClientsLoveUs() {
                     gap: "0.5rem",
                   }}
                 >
-                  The BillBite Way ⚡
+                  The BillBite Way <Zap size={16} />
                 </span>
               </div>
             </div>
@@ -619,7 +630,7 @@ export default function WhyClientsLoveUs() {
                       flexShrink: 0,
                     }}
                   >
-                    ✕
+                    <X size={20} />
                   </div>
                   <p
                     style={{
@@ -665,7 +676,7 @@ export default function WhyClientsLoveUs() {
                       flexShrink: 0,
                     }}
                   >
-                    ✓
+                    <Check size={20} />
                   </div>
                   <p
                     style={{
@@ -691,96 +702,165 @@ export default function WhyClientsLoveUs() {
           style={{
             marginTop: "8rem",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "1.5rem",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "1rem",
           }}
         >
           {[
             {
-              icon: "🍽️",
+              icon: <Utensils color={theme.colors.accent} size={24} />,
               title: "Tables & QR",
               text: "Manage floor plans, table statuses, and allow guests to order via QR codes seamlessly.",
             },
             {
-              icon: "📱",
+              icon: <Smartphone color={theme.colors.accent} size={24} />,
               title: "Online Orders",
               text: "Integrate with delivery aggregators and keep online orders visible alongside your POS.",
             },
             {
-              icon: "👥",
+              icon: <Users color={theme.colors.accent} size={24} />,
               title: "Staff Management",
               text: "Manage employee roles, track shifts, and monitor detailed user activity logs.",
             },
             {
-              icon: "🚚",
+              icon: <Truck color={theme.colors.accent} size={24} />,
               title: "Supplier Tracking",
               text: "Keep suppliers, purchasing operations, and inward material records highly organized.",
             },
             {
-              icon: "💰",
+              icon: <Wallet color={theme.colors.accent} size={24} />,
               title: "Accounting",
               text: "Track payments, daily expenses, petty cash, and end-of-day withdrawals.",
             },
             {
-              icon: "📈",
+              icon: <TrendingUp color={theme.colors.accent} size={24} />,
               title: "Advanced Reports",
               text: "Understand sales trends, inventory gaps, and operational performance with real-time data.",
             },
           ].map((feature, i) => (
             <div
               key={i}
-              style={{
-                padding: "2rem",
-                borderRadius: "1.5rem",
-                background: `linear-gradient(180deg, ${theme.colors.whiteAlpha.a05} 0%, transparent 100%)`,
-                border: `1px solid ${theme.colors.whiteAlpha.a06}`,
-                borderTop: `1px solid ${theme.colors.whiteAlpha.a10}`,
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-                transition: "all 0.3s ease",
-                cursor: "default",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-5px)";
-                e.currentTarget.style.borderColor = theme.colors.whiteAlpha.a20;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.borderColor = theme.colors.whiteAlpha.a06;
-              }}
+              className="group hover:scale-[1.02] hover:!border-[var(--hover-border)] "
+              style={
+                {
+                  position: "relative",
+                  padding: "2.5rem 2rem",
+                  borderRadius: "24px",
+                  background: `linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)`,
+                  border: `1px solid rgba(255,255,255,0.05)`,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1.5rem",
+                  transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                  cursor: "default",
+                  overflow: "hidden",
+                  boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)",
+                  "--hover-border": `${theme.colors.accent}60`,
+                  "--hover-shadow": `${theme.colors.accent}20`,
+                } as React.CSSProperties
+              }
             >
+              {/* Massive Watermark Number */}
+              <div
+                style={
+                  {
+                    position: "absolute",
+                    bottom: "-5%",
+                    right: "5%",
+                    fontSize: "8rem",
+                    fontWeight: 900,
+                    color: "rgba(255,255,255,0.02)",
+                    lineHeight: 1,
+                    fontFamily: theme.fonts.heading,
+                    pointerEvents: "none",
+                    zIndex: 0,
+                    transition: "all 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+                    "--hover-accent": `${theme.colors.accent}40`,
+                  } as React.CSSProperties
+                }
+                className="group-hover:scale-110 group-hover:!text-[var(--hover-accent)] group-hover:-translate-y-4"
+              >
+                0{i + 1}
+              </div>
+
+              {/* Inner Glow */}
               <div
                 style={{
-                  width: "3rem",
-                  height: "3rem",
-                  borderRadius: "1rem",
-                  background: `${theme.colors.accent}15`,
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: `radial-gradient(circle at 50% 0%, ${theme.colors.accent}20 0%, transparent 70%)`,
+                  pointerEvents: "none",
+                  opacity: 0,
+                  transition: "opacity 0.4s ease",
+                }}
+                className="group-hover:opacity-100"
+              />
+
+              <div
+                style={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "1.5rem",
+                  gap: "1.25rem",
+                  position: "relative",
+                  zIndex: 1,
                 }}
               >
-                {feature.icon}
-              </div>
-              <div>
+                <div
+                  style={{
+                    width: "3.5rem",
+                    height: "3.5rem",
+                    borderRadius: "12px",
+                    background: `linear-gradient(135deg, ${theme.colors.whiteAlpha.a10} 0%, rgba(0,0,0,0.5) 100%)`,
+                    border: `1px solid ${theme.colors.whiteAlpha.a10}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "1.5rem",
+                    boxShadow: `inset 0 2px 0 0 ${theme.colors.whiteAlpha.a20}, 0 10px 20px -5px rgba(0,0,0,0.5)`,
+                    position: "relative",
+                    transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      width: "100%",
+                      height: "100%",
+                      filter: "blur(10px)",
+                      opacity: 0.2,
+                      zIndex: -1,
+                      transition: "opacity 0.4s ease",
+                    }}
+                    className="group-hover:opacity-60"
+                  />
+
+                  {feature.icon}
+                </div>
+
                 <h4
                   style={{
                     color: theme.colors.textLight,
                     fontWeight: 700,
-                    fontSize: "1.1rem",
-                    marginBottom: "0.5rem",
+                    fontSize: "1.25rem",
+                    margin: 0,
                     fontFamily: theme.fonts.heading,
+                    letterSpacing: "-0.01em",
                   }}
                 >
                   {feature.title}
                 </h4>
+              </div>
+
+              <div style={{ position: "relative", zIndex: 1 }}>
                 <p
                   style={{
-                    color: theme.colors.textMuted,
-                    fontSize: "0.95rem",
+                    color: theme.colors.whiteAlpha.a70,
+                    fontSize: "1rem",
                     lineHeight: 1.6,
+                    margin: 0,
                   }}
                 >
                   {feature.text}

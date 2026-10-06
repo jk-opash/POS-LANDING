@@ -70,8 +70,8 @@ export default function AnimatedHero() {
             position: "relative",
             backgroundColor: theme.colors.bgLight, // Fallback color
             borderStyle: "solid",
-            borderColor: theme.colors.borderLight,
-            borderWidth: 1,
+            borderColor: theme.colors.border,
+            borderWidth: 3,
           }}
         >
           {/* Static Background Image */}
@@ -102,12 +102,12 @@ export default function AnimatedHero() {
             <h1
               style={{
                 fontFamily: theme.fonts.heading,
-                fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+                fontSize: "clamp(2rem, 4vw, 3.5rem)",
                 lineHeight: 1.1,
                 color: theme.colors.textDark,
                 maxWidth: "900px",
                 margin: "0 auto",
-                fontWeight: 500,
+                fontWeight: 600,
               }}
             >
               Run Every Outlet Like You're Standing in All of Them.
@@ -136,7 +136,7 @@ export default function AnimatedHero() {
                 color: theme.colors.textDark,
                 maxWidth: "900px",
                 margin: "0 auto",
-                fontWeight: 500,
+                fontWeight: 600,
               }}
             >
               Multi-branch POS, GST-ready billing, and complete stock audit.
@@ -147,7 +147,7 @@ export default function AnimatedHero() {
           <motion.div
             style={{
               position: "absolute",
-              bottom: "-4%",
+              bottom: "-2.5%",
               left: "50%",
               width: "900px",
               height: "auto",
@@ -196,7 +196,7 @@ export default function AnimatedHero() {
                 style={{ flex: 1, display: "flex", flexDirection: "column" }}
               >
                 <Tabs
-                  items={PRODUCTS.map(p => ({ label: p.title }))}
+                  items={PRODUCTS.map((p) => ({ label: p.title }))}
                   activeIndex={activeTab}
                   onChange={setActiveTab}
                 />

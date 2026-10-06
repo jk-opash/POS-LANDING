@@ -1,216 +1,171 @@
-import React, { useState } from "react";
-import { Utensils, Coffee, Store } from "lucide-react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { Utensils, Coffee, Store, Plus, Minus } from "lucide-react";
 import { theme } from "@/config/theme";
 import { SOLUTIONS } from "@/constants/home";
 
 export default function Solutions() {
-  const [activeSol, setActiveSol] = useState("restaurant");
+  const [activeSol, setActiveSol] = useState(SOLUTIONS[0].id);
+  const [isHovering, setIsHovering] = useState(false);
+
+  // Auto-rotate every 5 seconds
+  useEffect(() => {
+    if (isHovering) return;
+    const timer = setInterval(() => {
+      setActiveSol((prev) => {
+        const idx = SOLUTIONS.findIndex((s) => s.id === prev);
+        return SOLUTIONS[(idx + 1) % SOLUTIONS.length].id;
+      });
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [activeSol, isHovering]);
+
+  const icons: Record<string, React.ReactNode> = {
+    restaurant: <Utensils size={24} strokeWidth={2.5} />,
+    cafe: <Coffee size={24} strokeWidth={2.5} />,
+    cloud: <Store size={24} strokeWidth={2.5} />,
+  };
+
+  const accents: Record<string, string> = {
+    restaurant: theme.colors.accent,
+    cafe: "#f97316", // Vibrant orange
+    cloud: "#3b82f6", // Vibrant blue
+  };
 
   return (
-    <>
-      {/* ════════════════════════════════════════════════════
-          6. SOLUTIONS — "What our solutions can do for you"
-      ════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          backgroundColor: theme.colors.bgLight,
-          padding: "8rem 0",
-          overflow: "hidden",
-        }}
-      >
-        <div className="pp-wrap">
-          <div
-            className="fade-up"
-            style={{ textAlign: "center", marginBottom: "4rem" }}
+    <section
+      style={{
+        backgroundColor: theme.colors.bgLight,
+        padding: "7rem 0",
+        overflow: "hidden",
+      }}
+    >
+      <div className="pp-wrap max-w-[740px] mx-auto flex flex-col items-center">
+        
+        <div className="fade-up w-full" style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <span
+            className="inline-flex items-center justify-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase mb-5"
+            style={{
+              color: theme.colors.textDark,
+              backgroundColor: "rgba(0,0,0,0.04)",
+            }}
           >
-            <span
-              className="badge-outline"
-              style={{
-                marginBottom: "1.25rem",
-                borderColor: theme.colors.border,
-                color: theme.colors.textDark,
-              }}
-            >
-              BUILT FOR YOUR BUSINESS
-            </span>
-            <h2
-              style={{
-                fontFamily: theme.fonts.heading,
-                fontWeight: 800,
-                fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                color: theme.colors.textDark,
-                lineHeight: 1.1,
-                maxWidth: "700px",
-                margin: "0 auto",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              One Platform. <br /> Every Food Business.
-            </h2>
-            <p
-              style={{
-                color: theme.colors.textMuted,
-                maxWidth: "540px",
-                margin: "1.5rem auto 0",
-                fontSize: "1.1rem",
-                lineHeight: 1.6,
-              }}
-            >
-              Whether you run a 50-table fine dine or a delivery-only cloud
-              kitchen, BillBite adapts to your workflow seamlessly.
-            </p>
-          </div>
+            Built for your business
+          </span>
+          <h2
+            style={{
+              fontFamily: theme.fonts.heading,
+              fontWeight: 800,
+              fontSize: "clamp(2rem, 5vw, 3.2rem)",
+              color: theme.colors.textDark,
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            One Platform. <br/> Every Food Business.
+          </h2>
+        </div>
 
-          <div className="flex flex-col lg:flex-row gap-3 h-auto lg:h-[560px] w-full max-w-6xl mx-auto fade-up">
-            {SOLUTIONS.map((sol) => {
-              const isActive = activeSol === sol.id;
-              const icons: Record<string, React.ReactNode> = {
-                restaurant: <Utensils size={20} />,
-                cafe: <Coffee size={20} />,
-                cloud: <Store size={20} />,
-              };
-              const accents: Record<string, string> = {
-                restaurant: theme.colors.accent,
-                cafe: theme.colors.semantic.cafe,
-                cloud: theme.colors.semantic.cloud,
-              };
-              const accent = accents[sol.id] || theme.colors.accent;
+        {/* Shape-shifting Vertical Accordion */}
+        <div 
+          className="fade-up w-full flex flex-col"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
+          {SOLUTIONS.map((sol) => {
+            const isActive = activeSol === sol.id;
+            const accent = accents[sol.id] || theme.colors.accent;
 
-              return (
-                <div
-                  key={sol.id}
-                  onClick={() => setActiveSol(sol.id)}
-                  className={`relative  rounded-[1.75rem] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer
-                    ${
-                      isActive
-                        ? "flex-[1] lg:flex-[1_1_100%] h-[560px] lg:h-auto"
-                        : "flex-[1] lg:flex-[0_0_88px] h-[88px] lg:h-auto hover:bg-gray-100"
-                    }
-                  `}
-                  style={{
-                    boxShadow: isActive ? theme.shadows.lg : "none",
-                    background: isActive
-                      ? theme.colors.bgDark
-                      : theme.colors.bgLight,
-                    border: isActive
-                      ? `1px solid ${theme.colors.whiteAlpha.a10}`
-                      : `1px solid ${theme.colors.border}`,
-                    overflow: "hidden",
-                  }}
-                >
-                  <div
-                    className={`absolute inset-0 flex lg:flex-col items-center justify-start transition-all duration-500 z-20
-                    ${isActive ? "opacity-0 pointer-events-none scale-95" : "opacity-100 scale-100"}`}
-                    style={{ padding: "2rem 1.25rem" }}
-                  >
-                    <div className="w-11 h-11 rounded-2xl bg-white shadow-sm border border-black/5 flex items-center justify-center text-lg shrink-0">
+            return (
+              <div
+                key={sol.id}
+                onClick={() => setActiveSol(sol.id)}
+                className={`relative group cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+                  isActive 
+                    ? "bg-[#0A0A0C] text-white my-3 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.4)] border border-[#1A1A1E]" 
+                    : "bg-transparent text-gray-900 border-b border-gray-200 hover:bg-gray-50/50"
+                }`}
+                style={{
+                  padding: isActive ? "2.5rem 3rem" : "1.5rem 1rem",
+                }}
+              >
+                {/* Header Row */}
+                <div className="flex items-center justify-between z-10 relative">
+                  <div className="flex items-center gap-5">
+                    <div 
+                      className={`flex items-center justify-center transition-colors duration-500 ${
+                        isActive ? "" : "text-gray-400 group-hover:text-gray-900"
+                      }`}
+                      style={{ color: isActive ? accent : undefined }}
+                    >
                       {icons[sol.id]}
                     </div>
-                    <div className="hidden lg:flex lg:flex-1 mt-4">
-                      <h3
-                        className="font-h font-bold text-gray-400 text-lg tracking-[0.2em] uppercase whitespace-nowrap"
-                        style={{
-                          writingMode: "vertical-rl",
-                          transform: "rotate(180deg)",
-                        }}
-                      >
-                        {sol.label}
-                      </h3>
-                    </div>
-                    <div className="lg:hidden">
-                      <h3 className="font-h font-bold text-gray-400 text-lg tracking-[0.15em] uppercase">
-                        {sol.label}
-                      </h3>
-                    </div>
+                    <h3 className={`font-h font-extrabold tracking-tight transition-all duration-500 ${
+                      isActive ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"
+                    }`}>
+                      {sol.label}
+                    </h3>
                   </div>
 
-                  <div
-                    className={`absolute inset-0 transition-all duration-700 delay-100 flex flex-col lg:flex-row
-                    ${isActive ? "opacity-100 translate-y-0 pointer-events-auto z-10" : "opacity-0 translate-y-6 pointer-events-none z-0"}`}
+                  <div 
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
+                      isActive 
+                        ? "bg-white/10 text-white rotate-180" 
+                        : "bg-gray-100 text-gray-400 group-hover:bg-gray-200 group-hover:text-gray-900"
+                    }`}
                   >
-                    {/* LEFT — Text Content */}
-                    <div
-                      className="w-full lg:w-[55%] h-[55%] lg:h-full gap-5 flex flex-col justify-center rounded-l-[1.75rem]"
-                      style={{ padding: "2.5rem 3.5rem" }}
-                    >
-                      {/* Category Pill */}
-                      <div className="flex items-center gap-2.5 mb-6">
-                        <div
-                          className="w-9 h-9 rounded-xl flex items-center justify-center text-lg shrink-0"
-                          style={{ background: `${accent}20` }}
-                        >
-                          {icons[sol.id]}
+                    {isActive ? <Minus size={18} strokeWidth={2.5} /> : <Plus size={18} strokeWidth={2.5} />}
+                  </div>
+                </div>
+
+                {/* Expandable Content Area using CSS Grid Trick */}
+                <div 
+                  className="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  style={{
+                    display: "grid",
+                    gridTemplateRows: isActive ? "1fr" : "0fr",
+                    opacity: isActive ? 1 : 0,
+                    marginTop: isActive ? "2rem" : "0",
+                  }}
+                >
+                  <div className="overflow-hidden">
+                    <p className="text-xl md:text-2xl text-gray-300 font-bold leading-snug mb-10 max-w-[95%] tracking-tight">
+                      {sol.sub}
+                    </p>
+
+                    {/* Timeline-style Points */}
+                    <div className="flex flex-col gap-6 relative ml-1">
+                      {/* Connecting Line */}
+                      <div className="absolute left-[11px] top-3 bottom-3 w-[2px] bg-white/10 z-0" />
+                      
+                      {sol.points.map((pt, i) => (
+                        <div key={i} className="flex items-center gap-6 relative z-10 group/point">
+                           <div 
+                             className="w-6 h-6 rounded-full shrink-0 border-[4px] border-[#0A0A0C] shadow-[0_0_0_1px_rgba(255,255,255,0.1)] transition-transform duration-300 group-hover/point:scale-125"
+                             style={{ backgroundColor: accent }}
+                           />
+                           <span className="text-[15px] md:text-[16px] font-medium tracking-wide text-gray-300 group-hover/point:text-white transition-colors">
+                             {pt}
+                           </span>
                         </div>
-                        <span
-                          className="text-[11px] font-bold text-gray-400 tracking-[0.2em] uppercase"
-                          style={{ color: accent }}
-                        >
-                          {sol.label}
-                        </span>
-                      </div>
-
-                      {/* Headline */}
-                      <h3 className="text-2xl sm:text-2xl lg:text-3xl font-extrabold text-white font-h leading-[1.15] tracking-[-0.02em] mb-3">
-                        {sol.label}
-                      </h3>
-
-                      {/* Sub */}
-                      <p className="text-gray-500 text-sm sm:text-[0.95rem] leading-relaxed mb-6 max-w-md">
-                        {sol.sub}
-                      </p>
-
-                      {/* Feature Points */}
-                      <div className="flex flex-col gap-2.5 mb-8">
-                        {sol.points.map((pt, idx) => (
-                          <div
-                            key={pt}
-                            className="flex items-center gap-3 group"
-                          >
-                            <div
-                              className="w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-black shrink-0 transition-transform duration-300 group-hover:scale-110"
-                              style={{
-                                background: `${accent}18`,
-                                color: accent,
-                              }}
-                            >
-                              {String(idx + 1).padStart(2, "0")}
-                            </div>
-                            <span className="text-gray-600 text-sm font-medium group-hover:text-gray-900 transition-colors duration-300">
-                              {pt}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* RIGHT — Image */}
-                    <div className="w-full h-[45%] lg:h-full relative flex items-center justify-center overflow-hidden">
-                      {/* Gradient overlay */}
-                      <div
-                        className="absolute inset-0 z-10 pointer-events-none"
-                        style={{
-                          background: `linear-gradient(135deg, ${theme.colors.bgDark} 0%, transparent 40%, transparent 100%)`,
-                        }}
-                      />
-                      {/* Accent glow */}
-                      <div
-                        className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full blur-[80px] opacity-20 z-0"
-                        style={{ background: accent }}
-                      />
-                      <img
-                        src={sol.img}
-                        alt={sol.label}
-                        className="relative z-[5] w-full h-full object-contain p-6 sm:p-8 lg:p-10 transition-transform duration-1000 hover:scale-[1.04]"
-                      />
+                      ))}
                     </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-    </>
+                {/* Subtle ambient glow when active */}
+                {isActive && (
+                   <div 
+                     className="absolute -bottom-20 -right-20 w-64 h-64 blur-[100px] opacity-20 pointer-events-none rounded-full"
+                     style={{ backgroundColor: accent }}
+                   />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }

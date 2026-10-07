@@ -87,11 +87,11 @@ a {
   border: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
-  box-shadow: var(--shadow-accent);
+  /* box-shadow: var(--shadow-accent); */
 }
 .btn-primary:hover { 
   transform: translateY(-2px); 
-  box-shadow: 0 12px 40px rgba(255, 90, 31, 0.4);
+  /* box-shadow: 0 12px 40px rgba(255, 90, 31, 0.4); */
 }
 .btn-primary:active { transform: scale(0.98); }
 

@@ -1,190 +1,443 @@
-import React from "react";
-import { CheckCircle2, Store, ReceiptIndianRupee, LineChart, LayoutDashboard, ChefHat, LayoutList, Package, Network, Users, Truck, BarChart3, Wallet, ShieldCheck, CreditCard, HeadphonesIcon } from "lucide-react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { theme } from "@/config/theme";
 
-export default function FeaturesPage() {
-  return (
-    <div style={{ flex: 1, backgroundColor: theme.colors.bgLight, paddingBottom: "5rem" }}>
-      {/* Hero */}
-      <section style={{ backgroundColor: theme.colors.bgDark, paddingTop: "8rem", paddingBottom: "6rem", textAlign: "center" }}>
-        <div className="pp-wrap">
-          <h1 style={{ fontFamily: theme.fonts.heading, fontWeight: 700, fontSize: "clamp(2.5rem, 6vw, 4rem)", color: "#fff", marginBottom: "1.5rem" }}>
-            The Actual Product, In Full Depth
-          </h1>
-          <p style={{ color: "#9EAAB4", maxWidth: "700px", margin: "0 auto", fontSize: "1.25rem", lineHeight: 1.6 }}>
-            Built from the actual feature set in our codebases — not generic SaaS boilerplate.
+const SECTIONS = [
+  {
+    id: "pos-client",
+    title: "Terminal Billing (POS-CLIENT)",
+    bg: "#FFFFFF",
+    content: (
+      <>
+        <p
+          style={{
+            marginBottom: "2rem",
+            fontSize: "1.15rem",
+            lineHeight: 1.8,
+            color: "rgba(0,0,0,0.7)",
+          }}
+        >
+          Built for speed and resilience, our in-store client runs smoothly even
+          when the internet drops. Say goodbye to laggy web wrappers.
+        </p>
+        <div style={{ marginBottom: "2rem" }}>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Unified Dashboard
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Manage dine-in tables, takeaway walk-ins, and online orders from a
+            single glass pane. Features split billing, partial payments (Cash +
+            UPI + Card), and one-tap KOT generation directly to the kitchen.
           </p>
         </div>
-      </section>
+        <div>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Offline-First Architecture
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Local database caching ensures you can continue punching orders and
+            printing receipts during ISP outages. Data syncs automatically to
+            POS-ADMIN the moment connectivity is restored.
+          </p>
+        </div>
+      </>
+    ),
+  },
+  {
+    id: "pos-new",
+    title: "Aggregator Hub (POS-NEW)",
+    bg: "#F9FAFB",
+    content: (
+      <>
+        <p
+          style={{
+            marginBottom: "2rem",
+            fontSize: "1.15rem",
+            lineHeight: 1.8,
+            color: "rgba(0,0,0,0.7)",
+          }}
+        >
+          Stop juggling three different tablets at your counter. Our Aggregator
+          Hub pulls Swiggy, Zomato, and direct Web Orders into one unified
+          stream.
+        </p>
+        <div style={{ marginBottom: "2rem" }}>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Auto-Accept & Dispatch
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Configure rules to automatically accept online orders during
+            off-peak hours. Instantly ping rider tracking and mark orders 'Food
+            Ready' right from the kitchen display.
+          </p>
+        </div>
+        <div>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Menu Syncing
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Change a price or mark an item out-of-stock in POS-ADMIN, and push
+            the update instantly to all connected third-party aggregators with a
+            single click.
+          </p>
+        </div>
+      </>
+    ),
+  },
+  {
+    id: "pos-admin",
+    title: "Back Office (POS-ADMIN)",
+    bg: "#FFFFFF",
+    content: (
+      <>
+        <p
+          style={{
+            marginBottom: "2rem",
+            fontSize: "1.15rem",
+            lineHeight: 1.8,
+            color: "rgba(0,0,0,0.7)",
+          }}
+        >
+          The command center for multi-outlet owners. Track inventory, analyze
+          sales, and manage payroll across your entire franchise network.
+        </p>
+        <div style={{ marginBottom: "2rem" }}>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Granular Inventory Control
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Track raw materials down to the gram. Link composite recipes to menu
+            items for automatic SKU deduction upon sale. Generate low-stock
+            alerts and one-click purchase orders for suppliers.
+          </p>
+        </div>
+        <div>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Reconciliation & Reporting
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Identify discrepancies between expected aggregator payouts and
+            actual bank settlements. Generate dynamic heatmaps showing peak
+            sales hours and most profitable menu engineering zones.
+          </p>
+        </div>
+      </>
+    ),
+  },
+];
 
-      <section style={{ padding: "5rem 0" }}>
-        <div className="pp-wrap" style={{ maxWidth: "1200px" }}>
-          
-          <div style={{ display: "flex", flexDirection: "column", gap: "6rem" }}>
-            
-            {/* Feature 1 */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem", alignItems: "center" }}>
-              <div style={{ flex: "1 1 400px" }}>
-                <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: "3rem", height: "3rem", borderRadius: "0.75rem", background: "rgba(255, 90, 31, 0.1)", color: theme.colors.accent, marginBottom: "1rem" }}>
-                  <ReceiptIndianRupee />
-                </div>
-                <h3 style={{ fontFamily: theme.fonts.heading, fontSize: "2rem", fontWeight: 700, color: theme.colors.textDark, marginBottom: "1.5rem" }}>1. POS & Billing</h3>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", listStyle: "none" }}>
-                  {[
-                    "Fast, touch-based billing for Dine-in and Takeaway from one unified screen.",
-                    "Split bills by item, by person, or by amount.",
-                    "Multiple payment methods on a single bill — Cash, Card, UPI, Due, or Part-payment combinations.",
-                    "GST-compliant invoices generated automatically, tax rate configurable per branch.",
-                    "Order-level discounts, percentage or flat; due/partial payment tracking."
-                  ].map((point, i) => (
-                    <li key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
-                      <CheckCircle2 style={{ color: theme.colors.accent, width: "1.25rem", height: "1.25rem", flexShrink: 0, marginTop: "0.25rem" }} />
-                      <span style={{ color: theme.colors.textDark, opacity: 0.8, lineHeight: 1.6 }}>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div style={{ flex: "1 1 500px", background: theme.colors.bgSurface, border: `1px solid ${theme.colors.border}`, borderRadius: "1.5rem", boxShadow: "var(--shadow-sm)", minHeight: "350px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ color: "rgba(0,0,0,0.3)", fontWeight: 600 }}>POS Billing Interface</span>
-              </div>
-            </div>
+export default function FeaturesPage() {
+  const [activeSection, setActiveSection] = useState(SECTIONS[0].id);
 
-            {/* Feature 2 */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem", alignItems: "center", flexDirection: "row-reverse" }}>
-              <div style={{ flex: "1 1 400px" }}>
-                <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: "3rem", height: "3rem", borderRadius: "0.75rem", background: "rgba(255, 90, 31, 0.1)", color: theme.colors.accent, marginBottom: "1rem" }}>
-                  <Store />
-                </div>
-                <h3 style={{ fontFamily: theme.fonts.heading, fontSize: "2rem", fontWeight: 700, color: theme.colors.textDark, marginBottom: "1.5rem" }}>2. Online Order Aggregation</h3>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", listStyle: "none", marginBottom: "1.5rem" }}>
-                  {[
-                    "Incoming Zomato and Swiggy orders land in the same screen as dine-in and takeaway — no separate tablet per platform.",
-                    "One-tap Accept/Reject on every new order, color-coded by platform so staff know at a glance where it came from.",
-                    "Full order detail panel per ticket — items, platform, order ID, time since placed."
-                  ].map((point, i) => (
-                    <li key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
-                      <CheckCircle2 style={{ color: theme.colors.accent, width: "1.25rem", height: "1.25rem", flexShrink: 0, marginTop: "0.25rem" }} />
-                      <span style={{ color: theme.colors.textDark, opacity: 0.8, lineHeight: 1.6 }}>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div style={{ padding: "1rem", background: "rgba(255, 90, 31, 0.05)", border: "1px solid rgba(255, 90, 31, 0.2)", borderRadius: "0.75rem", fontSize: "0.9rem", color: theme.colors.accent, fontWeight: 600 }}>
-                  This single feature directly addresses the "three tablets on the counter" complaint almost every multi-channel Indian restaurant has.
-                </div>
-              </div>
-              <div style={{ flex: "1 1 500px", background: theme.colors.bgSurface, border: `1px solid ${theme.colors.border}`, borderRadius: "1.5rem", boxShadow: "var(--shadow-sm)", minHeight: "350px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ color: "rgba(0,0,0,0.3)", fontWeight: 600 }}>Zomato/Swiggy Unified Interface</span>
-              </div>
-            </div>
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionElements = SECTIONS.map((s) =>
+        document.getElementById(s.id),
+      );
+      const scrollPosition = window.scrollY + 300;
 
-            {/* Feature 3 */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem", alignItems: "center" }}>
-              <div style={{ flex: "1 1 400px" }}>
-                <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: "3rem", height: "3rem", borderRadius: "0.75rem", background: "rgba(255, 90, 31, 0.1)", color: theme.colors.accent, marginBottom: "1rem" }}>
-                  <LineChart />
-                </div>
-                <h3 style={{ fontFamily: theme.fonts.heading, fontSize: "2rem", fontWeight: 700, color: theme.colors.textDark, marginBottom: "1.5rem" }}>3. Payout Reconciliation</h3>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", listStyle: "none", marginBottom: "1.5rem" }}>
-                  {[
-                    "Tracks gross amount, platform deductions/commission, and net payout per order, per platform (Zomato/Swiggy tabs, plus an 'All Platforms' view).",
-                    "Automatically flags discrepancies — orders where what you were paid doesn't match what you were owed.",
-                    "Branch-filterable, so a multi-outlet owner can reconcile each location's aggregator payouts separately."
-                  ].map((point, i) => (
-                    <li key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
-                      <CheckCircle2 style={{ color: theme.colors.accent, width: "1.25rem", height: "1.25rem", flexShrink: 0, marginTop: "0.25rem" }} />
-                      <span style={{ color: theme.colors.textDark, opacity: 0.8, lineHeight: 1.6 }}>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div style={{ padding: "1rem", background: "rgba(255, 90, 31, 0.05)", border: "1px solid rgba(255, 90, 31, 0.2)", borderRadius: "0.75rem", fontSize: "0.9rem", color: theme.colors.accent, fontWeight: 600 }}>
-                  This is the feature that turns "I think Zomato shorted me" into a number you can actually prove.
-                </div>
-              </div>
-              <div style={{ flex: "1 1 500px", background: theme.colors.bgSurface, border: `1px solid ${theme.colors.border}`, borderRadius: "1.5rem", boxShadow: "var(--shadow-sm)", minHeight: "350px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ color: "rgba(0,0,0,0.3)", fontWeight: 600 }}>Payout Reconciliation View</span>
-              </div>
-            </div>
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const el = sectionElements[i];
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(SECTIONS[i].id);
+          break;
+        }
+      }
+    };
 
-            {/* Feature 4 */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem", alignItems: "center", flexDirection: "row-reverse" }}>
-              <div style={{ flex: "1 1 400px" }}>
-                <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: "3rem", height: "3rem", borderRadius: "0.75rem", background: "rgba(255, 90, 31, 0.1)", color: theme.colors.accent, marginBottom: "1rem" }}>
-                  <LayoutDashboard />
-                </div>
-                <h3 style={{ fontFamily: theme.fonts.heading, fontSize: "2rem", fontWeight: 700, color: theme.colors.textDark, marginBottom: "1.5rem" }}>4. Table & Floor Management</h3>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", listStyle: "none" }}>
-                  {[
-                    "A true visual, drag-and-drop floor-plan editor — real table positions and rotation, not a plain list.",
-                    "Zones/sections (Indoor, Outdoor, Rooftop, AC) to organize tables logically.",
-                    "Table merging for large parties, live status (Available/Occupied/Reserved), per-table capacity."
-                  ].map((point, i) => (
-                    <li key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
-                      <CheckCircle2 style={{ color: theme.colors.accent, width: "1.25rem", height: "1.25rem", flexShrink: 0, marginTop: "0.25rem" }} />
-                      <span style={{ color: theme.colors.textDark, opacity: 0.8, lineHeight: 1.6 }}>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div style={{ flex: "1 1 500px", background: theme.colors.bgSurface, border: `1px solid ${theme.colors.border}`, borderRadius: "1.5rem", boxShadow: "var(--shadow-sm)", minHeight: "350px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ color: "rgba(0,0,0,0.3)", fontWeight: 600 }}>Table/zone floor-plan editor</span>
-              </div>
-            </div>
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-            {/* Feature 5 */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem", alignItems: "center" }}>
-              <div style={{ flex: "1 1 400px" }}>
-                <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: "3rem", height: "3rem", borderRadius: "0.75rem", background: "rgba(255, 90, 31, 0.1)", color: theme.colors.accent, marginBottom: "1rem" }}>
-                  <ChefHat />
-                </div>
-                <h3 style={{ fontFamily: theme.fonts.heading, fontSize: "2rem", fontWeight: 700, color: theme.colors.textDark, marginBottom: "1.5rem" }}>5. KOT & Kitchen Display</h3>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", listStyle: "none" }}>
-                  {[
-                    "Multiple KOT 'rounds' per order — add more items anytime without closing the original bill; each round prints its own numbered ticket.",
-                    "Kitchen-side status per ticket: Sent → Accepted → Ready → Served.",
-                    "Item notes and chosen variant/add-ons printed on the ticket, not just the item name."
-                  ].map((point, i) => (
-                    <li key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
-                      <CheckCircle2 style={{ color: theme.colors.accent, width: "1.25rem", height: "1.25rem", flexShrink: 0, marginTop: "0.25rem" }} />
-                      <span style={{ color: theme.colors.textDark, opacity: 0.8, lineHeight: 1.6 }}>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div style={{ flex: "1 1 500px", background: theme.colors.bgSurface, border: `1px solid ${theme.colors.border}`, borderRadius: "1.5rem", boxShadow: "var(--shadow-sm)", minHeight: "350px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ color: "rgba(0,0,0,0.3)", fontWeight: 600 }}>KOT receipt / Kitchen display</span>
-              </div>
-            </div>
-
+  return (
+    <div
+      style={{
+        backgroundColor: theme.colors.bgLight,
+        minHeight: "100vh",
+        color: theme.colors.textDark,
+      }}
+    >
+      <div
+        style={{
+          paddingTop: "160px",
+          paddingBottom: "80px",
+          paddingLeft: "2rem",
+          paddingRight: "2rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <div
+            style={{
+              display: "inline-block",
+              padding: "0.4rem 1rem",
+              borderRadius: "100px",
+              background: "rgba(255, 69, 0, 0.08)",
+              color: theme.colors.primary,
+              fontWeight: 700,
+              fontSize: "0.75rem",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Product Features
           </div>
-          
-          {/* Lighter Grid for remaining features (6-15) */}
-          <div style={{ marginTop: "8rem", paddingTop: "5rem", borderTop: `1px solid ${theme.colors.border}` }}>
-            <h3 style={{ textAlign: "center", fontFamily: theme.fonts.heading, fontSize: "2.5rem", fontWeight: 700, marginBottom: "4rem", color: theme.colors.textDark }}>More Powerful Capabilities</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem" }}>
-              {[
-                { icon: <LayoutList style={{width: "1.25rem", height: "1.25rem"}}/>, title: "6. Menu Management", desc: "Categories, variants (Half/Full), custom add-on min/max groups, spice-level selectors, and dietary tags (Veg/Non-Veg/Jain)." },
-                { icon: <Package style={{width: "1.25rem", height: "1.25rem"}}/>, title: "7. Inventory Management", desc: "Real-time stock, SKU catalogs, composite recipe items that auto-deduct, and a full movement ledger logging every adjustment." },
-                { icon: <Network style={{width: "1.25rem", height: "1.25rem"}}/>, title: "8. Multi-Branch Operations", desc: "One login across every outlet. Flexible per-branch tax rates, currency, timezones, and operating hours." },
-                { icon: <Users style={{width: "1.25rem", height: "1.25rem"}}/>, title: "9. Staff & Role Management", desc: "4-level hierarchy (Superadmin → Staff), PIN-based quick logins, and full employment records (salary, join date)." },
-                { icon: <Truck style={{width: "1.25rem", height: "1.25rem"}}/>, title: "10. Supplier Management", desc: "Vendor directory with performance scoring (quality/pricing), contract tracking, and a running communication log." },
-                { icon: <BarChart3 style={{width: "1.25rem", height: "1.25rem"}}/>, title: "11. Reports & Analytics", desc: "Sales by item, category, branch; inventory movement; and staff performance — as live dashboards, not raw exports." },
-                { icon: <Wallet style={{width: "1.25rem", height: "1.25rem"}}/>, title: "12. Finance Tracking", desc: "Expense logging by category per branch, utility bill tracking, and cash withdrawal logging tied to specific staff members." },
-                { icon: <ShieldCheck style={{width: "1.25rem", height: "1.25rem"}}/>, title: "13. Security & Audit Logs", desc: "Every sensitive action logged (who, severity, terminal, IP). A readable activity trail an owner can scan in minutes." },
-                { icon: <CreditCard style={{width: "1.25rem", height: "1.25rem"}}/>, title: "14. Subscription Management", desc: "Self-serve plan and billing-cycle control, per-plan branch limits with overage visibility, and full invoice history." },
-                { icon: <HeadphonesIcon style={{width: "1.25rem", height: "1.25rem"}}/>, title: "15. Support & Self-Serve", desc: "Built-in support ticketing with SLA tracking, categorized searchable in-app help center, and targeted in-app notifications." }
-              ].map((f, i) => (
-                <div key={i} className="bento-card" style={{ padding: "2rem", background: theme.colors.bgSurface }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem", color: theme.colors.accent }}>
-                    {f.icon}
-                    <h4 style={{ fontFamily: theme.fonts.heading, fontWeight: 700, fontSize: "1.1rem", color: theme.colors.textDark }}>{f.title}</h4>
-                  </div>
-                  <p style={{ color: theme.colors.textDark, opacity: 0.7, fontSize: "0.95rem", lineHeight: 1.6 }}>{f.desc}</p>
-                </div>
+          <h1
+            style={{
+              fontSize: "clamp(3rem, 6vw, 4.5rem)",
+              fontFamily: theme.fonts.heading,
+              fontWeight: 800,
+              lineHeight: 1.05,
+              letterSpacing: "-0.03em",
+              marginBottom: "1.5rem",
+              maxWidth: "800px",
+            }}
+          >
+            The actual product.
+            <br />
+            In full depth.
+          </h1>
+          <p
+            style={{
+              fontSize: "1.25rem",
+              color: "rgba(0,0,0,0.6)",
+              lineHeight: 1.6,
+              maxWidth: "650px",
+            }}
+          >
+            Built from the true feature set in our codebases — not generic SaaS
+            boilerplate. Explore the capabilities of our unified ecosystem.
+          </p>
+        </motion.div>
+      </div>
+
+      <div style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            position: "relative",
+          }}
+        >
+          <div
+            className="feat-sidebar"
+            style={{
+              position: "sticky",
+              top: "100px",
+              width: "320px",
+              flexShrink: 0,
+              padding: "4rem 3rem 4rem 1.5rem",
+              borderRight: "1px solid rgba(0,0,0,0.06)",
+              display: "none",
+              height: "calc(100vh - 100px)",
+              overflowY: "auto",
+            }}
+          >
+            <h4
+              style={{
+                fontSize: "0.85rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "rgba(0,0,0,0.4)",
+                marginBottom: "2rem",
+                fontWeight: 700,
+              }}
+            >
+              Ecosystem
+            </h4>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.25rem",
+              }}
+            >
+              {SECTIONS.map((s) => (
+                <button
+                  key={s.id}
+                  onClick={() => {
+                    const el = document.getElementById(s.id);
+                    if (el) {
+                      const y =
+                        el.getBoundingClientRect().top + window.scrollY - 100;
+                      window.scrollTo({ top: y, behavior: "smooth" });
+                    }
+                  }}
+                  style={{
+                    textAlign: "left",
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    margin: 0,
+                    cursor: "pointer",
+                    fontSize: "1rem",
+                    fontWeight: activeSection === s.id ? 700 : 500,
+                    color:
+                      activeSection === s.id
+                        ? theme.colors.primary
+                        : "rgba(0,0,0,0.5)",
+                    transition: "all 0.2s ease",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "4px",
+                      height: activeSection === s.id ? "1.5rem" : "0px",
+                      backgroundColor: theme.colors.primary,
+                      borderRadius: "4px",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    }}
+                  />
+                  {s.title}
+                </button>
               ))}
             </div>
           </div>
+
+          <div style={{ flex: 1, paddingBottom: "8rem" }}>
+            {SECTIONS.map((section) => (
+              <div
+                id={section.id}
+                key={section.id}
+                style={{
+                  padding: "5rem 2rem",
+                  background: section.bg,
+                  borderBottom: "1px solid rgba(0,0,0,0.04)",
+                }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  style={{ maxWidth: "750px" }}
+                >
+                  <h2
+                    style={{
+                      fontSize: "2.25rem",
+                      fontWeight: 800,
+                      marginBottom: "2.5rem",
+                      letterSpacing: "-0.02em",
+                      color: theme.colors.textDark,
+                    }}
+                  >
+                    {section.title}
+                  </h2>
+                  {section.content}
+                </motion.div>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        @media (min-width: 900px) {
+          .feat-sidebar { display: block !important; }
+        }
+      `,
+        }}
+      />
     </div>
   );
 }

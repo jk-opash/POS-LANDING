@@ -1,21 +1,11 @@
-import ProductPageTemplate from "@/components/ProductPageTemplate";
-import { LayoutDashboard, Activity, ArrowLeftRight } from "lucide-react";
+import { Metadata } from 'next';
+import TableFloorClient from './TableFloorClient';
 
-export default function TableFloorManagement() {
-  return (
-    <ProductPageTemplate
-      title="Table & Floor Management"
-      subtitle="Visual drag-and-drop floor-plan editor, real positioning and rotation, zones, table merging, and live occupancy status."
-      features={[
-        { title: "Visual Floor Plan", desc: "Replicate your exact restaurant layout with drag-and-drop tables, zones, and sections.", icon: <LayoutDashboard /> },
-        { title: "Live Occupancy Status", desc: "Instantly see which tables are vacant, occupied, or waiting for the bill.", icon: <Activity /> },
-        { title: "Merge & Split Tables", desc: "Easily accommodate large groups by merging tables, or split them for separate billing.", icon: <ArrowLeftRight /> },
-      ]}
-      benefits={[
-        { title: "Optimize Seating", desc: "Never leave a table empty for too long. Seat walk-ins faster with real-time status." },
-        { title: "Avoid Confusion", desc: "Waiters always know exactly where to deliver the food, reducing errors." },
-        { title: "Better Guest Experience", desc: "Manage reservations and waitlists smoothly during peak hours." },
-      ]}
-    />
-  );
+export const metadata: Metadata = {
+  title: "POS Table & Floor Management Software | Live Occupancy",
+  description: "Replicate your exact restaurant floor plan with a visual drag-and-drop editor. Track live table statuses, merge tables, and manage waitlists efficiently.",
+};
+
+export default function TableFloorManagementPage() {
+  return <TableFloorClient />;
 }

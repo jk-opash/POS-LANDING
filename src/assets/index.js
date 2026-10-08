@@ -1,16 +1,12 @@
-import posBilling from "./images/pos-billing.png";
-import posInventory from "./images/pos-inventory.png";
-import posFloorPlan from "./images/pos-floor-plan.png";
-import posKOT from "./images/pos-kot.png";
-// import posOnlineOrders from "./images/pos-online-orders.png";
-// import posReports from "./images/pos-reports.png";
+import posBilling from "./images/pos-billing.webp";
+import posInventory from "./images/pos-inventory.webp";
+import posFloorPlan from "./images/pos-floor-plan.webp";
+import posKOT from "./images/pos-kot.webp";
 
 export const IMAGES = {
-  heroBg: "/hero-image.jpg",
+  heroBg: "/hero-image.webp",
   posBilling,
   posInventory,
   posFloorPlan,
   posKOT,
-  //   posOnlineOrders,
-  //   posReports,
 };

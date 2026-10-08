@@ -12,6 +12,7 @@ import Solutions from "@/components/home/Solutions";
 import Pricing from "@/components/home/Pricing";
 import Faqs from "@/components/home/Faqs";
 import Testimonials from "@/components/home/Testimonials";
+import ScrollFeatures from "@/components/ScrollFeatures";
 
 export default function HomePage() {
   const [showTop, setShowTop] = useState(false);
@@ -39,6 +40,7 @@ export default function HomePage() {
   return (
     <div style={{ flex: 1 }}>
       <AnimatedHero />
+      <ScrollFeatures />
       <TrustedBrands />
       <WhyClientsLoveUs />
       <Ecosystem />

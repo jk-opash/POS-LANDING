@@ -37,7 +37,8 @@ const FOOTER_COLS = [
     links: [
       { label: "Blog", href: "/blog" },
       { label: "Help Center", href: "/help-center" },
-      { label: "Free Tools (soon)", href: "/free-tools" },
+      { label: "Free Tools", href: "/free-tools" },
+      { label: "Escalation Matrix", href: "/escalation-matrix" },
     ],
   },
   {
@@ -46,6 +47,9 @@ const FOOTER_COLS = [
       { label: "About Us", href: "/about-us" },
       { label: "Careers", href: "/careers" },
       { label: "Pricing", href: "/pricing" },
+      { label: "Features", href: "/features" },
+      { label: "Solutions", href: "/solutions" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
 ];
@@ -528,6 +532,62 @@ export function Footer() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* =======================
+          FULL BLEED WORDMARK
+      ======================= */}
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          overflow: "hidden",
+          marginTop: "4rem",
+          padding: "0 2rem",
+          pointerEvents: "none",
+        }}
+        aria-hidden="true"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1640 380"
+          style={{
+            display: "block",
+            width: "100%",
+            height: "auto",
+            maxWidth: "1640px",
+            marginBottom: "-10%",
+          }}
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <defs>
+            <linearGradient
+              id="billbite-footer-wordmark"
+              x1="820"
+              x2="820"
+              y1="0"
+              y2="380"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor={theme.colors.accent} stopOpacity="0" />
+              <stop offset="0.55" stopColor={theme.colors.accent} stopOpacity="0.2" />
+              <stop offset="1" stopColor={theme.colors.accent} stopOpacity="0.8" />
+            </linearGradient>
+          </defs>
+          <text
+            x="50%"
+            y="75%"
+            textAnchor="middle"
+            fontFamily={theme.fonts.heading}
+            fontWeight="800"
+            fontSize="400px"
+            letterSpacing="-0.04em"
+            fill="url(#billbite-footer-wordmark)"
+          >
+            BillBite
+          </text>
+        </svg>
       </div>
     </footer>
   );

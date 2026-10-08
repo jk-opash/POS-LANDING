@@ -182,82 +182,58 @@ export const FAQS = [
     q: "Can I manage restaurant tables with BillBite?",
     a: "Yes. BillBite provides complete table management with zones, table status, table assignment, table transfers, table merging, and order management directly from the table view.",
   },
-  // {
-  //   q: "What is KOT and does BillBite support it?",
-  //   a: "Yes. BillBite supports Kitchen Order Tickets (KOT) so orders can be sent to the kitchen for preparation. Kitchen staff can manage incoming orders and track their preparation status through the kitchen workflow.",
-  // },
-  // {
-  //   q: "Does BillBite have a Kitchen Display System (KDS)?",
-  //   a: "Yes. BillBite includes a Kitchen Display System that helps kitchen staff view, organize, and manage active orders and KOTs, making kitchen operations faster and easier to track.",
-  // },
-  // {
-  //   q: "Can I manage my restaurant menu in BillBite?",
-  //   a: "Yes. You can create and manage menu items, categories, subcategories, food types, availability, pricing, and other menu details. Menu items can also be managed outlet-wise.",
-  // },
-  // {
-  //   q: "Does BillBite provide inventory management?",
-  //   a: "Yes. BillBite includes inventory management with stock tracking, stock adjustments, stock transfers, replenishment, quarantine, low-stock and critical-stock monitoring, and inventory audit logs.",
-  // },
-  // {
-  //   q: "Can I track stock changes and inventory history?",
-  //   a: "Yes. BillBite maintains inventory adjustment and audit information so you can monitor stock changes and identify differences between system stock and physical inventory.",
-  // },
-  // {
-  //   q: "Can I manage suppliers and purchases?",
-  //   a: "Yes. BillBite includes supplier management where you can maintain supplier information and manage supplier-related operations for your restaurant inventory.",
-  // },
-  // {
-  //   q: "Does BillBite support restaurant staff management?",
-  //   a: "Yes. BillBite provides staff management features that help you maintain employee information, manage staff access, and monitor staff-related restaurant operations.",
-  // },
-  // {
-  //   q: "Can BillBite track staff performance?",
-  //   a: "Yes. BillBite provides staff performance reporting, including information such as sales generated, orders handled, and tables served, helping restaurant owners understand team performance.",
-  // },
-  // {
-  //   q: "Does BillBite provide sales and business reports?",
-  //   a: "Yes. BillBite provides detailed reports covering sales, revenue, item-wise sales, taxes, discounts, voids, staff performance, hourly trends, expenses, and stock variance.",
-  // },
-  // {
-  //   q: "Can I track expenses and payments?",
-  //   a: "Yes. BillBite provides accounting and payment management features that allow you to track expenses, payments, withdrawals, utilities, and other financial activities related to your outlets.",
-  // },
-  // {
-  //   q: "Does BillBite support tax and GST reporting?",
-  //   a: "Yes. BillBite provides tax and GST liability reports to help you review the taxes collected through your restaurant sales and prepare the required financial information.",
-  // },
-  // {
-  //   q: "Does BillBite support QR ordering?",
-  //   a: "Yes. BillBite supports QR-based ordering, allowing customers to access the restaurant's digital menu and place orders through the available QR ordering experience.",
-  // },
-  // {
-  //   q: "Can I manage takeaway orders separately?",
-  //   a: "Yes. BillBite provides a dedicated takeaway order workflow where staff can create and manage takeaway orders separately and process their payments through the POS.",
-  // },
-  // {
-  //   q: "Can BillBite generate invoices and receipts?",
-  //   a: "Yes. BillBite supports invoice and receipt management, including invoice details, payment information, invoice status, and configurable receipt and invoice settings.",
-  // },
-  // {
-  //   q: "Can I customize restaurant and business settings?",
-  //   a: "Yes. BillBite provides settings for business details, restaurant configuration, branch information, taxes, receipt and invoice preferences, system preferences, and other operational settings.",
-  // },
-  // {
-  //   q: "Can I monitor my restaurant's performance from a dashboard?",
-  //   a: "Yes. The BillBite dashboard provides an overview of important restaurant metrics such as orders, sales, payments, products, taxes, discounts, expenses, online orders, and outlet performance.",
-  // },
-  // {
-  //   q: "Can I use BillBite for more than one restaurant outlet?",
-  //   a: "Yes. BillBite is designed for multi-outlet restaurant businesses. You can manage branches from one platform while keeping outlet-level operations and performance organized separately.",
-  // },
-  // {
-  //   q: "Does BillBite help identify inventory losses or stock differences?",
-  //   a: "Yes. BillBite includes stock variance reporting and inventory audit tools that help you identify differences between recorded stock and physical inventory.",
-  // },
-  // {
-  //   q: "Is BillBite suitable for small and growing restaurants?",
-  //   a: "Yes. BillBite is designed to centralize restaurant operations, making it suitable for individual outlets as well as businesses that are growing into multiple branches.",
-  // },
+  {
+    q: "Does BillBite have a Kitchen Display System (KDS)?",
+    a: "Yes. BillBite includes a Kitchen Display System that helps kitchen staff view, organize, and manage active orders and KOTs, making kitchen operations faster and easier to track.",
+  },
+  {
+    q: "Can I manage my restaurant menu in BillBite?",
+    a: "Yes. You can create and manage menu items, categories, subcategories, food types, availability, pricing, and other menu details. Menu items can also be managed outlet-wise.",
+  },
+  {
+    q: "Does BillBite provide inventory management?",
+    a: "Yes. BillBite includes inventory management with stock tracking, stock adjustments, stock transfers, replenishment, quarantine, low-stock and critical-stock monitoring, and inventory audit logs.",
+  },
+  {
+    q: "Can I track stock changes and inventory history?",
+    a: "Yes. BillBite maintains inventory adjustment and audit information so you can monitor stock changes and identify differences between system stock and physical inventory.",
+  },
+  {
+    q: "Does BillBite provide sales and business reports?",
+    a: "Yes. BillBite provides detailed reports covering sales, revenue, item-wise sales, taxes, discounts, voids, staff performance, hourly trends, expenses, and stock variance.",
+  },
+  {
+    q: "Can I track expenses and payments?",
+    a: "Yes. BillBite provides accounting and payment management features that allow you to track expenses, payments, withdrawals, utilities, and other financial activities related to your outlets.",
+  },
+  {
+    q: "Does BillBite support tax and GST reporting?",
+    a: "Yes. BillBite provides tax and GST liability reports to help you review the taxes collected through your restaurant sales and prepare the required financial information.",
+  },
+  {
+    q: "Can BillBite generate invoices and receipts?",
+    a: "Yes. BillBite supports invoice and receipt management, including invoice details, payment information, invoice status, and configurable receipt and invoice settings.",
+  },
+  {
+    q: "Can I customize restaurant and business settings?",
+    a: "Yes. BillBite provides settings for business details, restaurant configuration, branch information, taxes, receipt and invoice preferences, system preferences, and other operational settings.",
+  },
+  {
+    q: "Can I monitor my restaurant's performance from a dashboard?",
+    a: "Yes. The BillBite dashboard provides an overview of important restaurant metrics such as orders, sales, payments, products, taxes, discounts, expenses, online orders, and outlet performance.",
+  },
+  {
+    q: "Can I use BillBite for more than one restaurant outlet?",
+    a: "Yes. BillBite is designed for multi-outlet restaurant businesses. You can manage branches from one platform while keeping outlet-level operations and performance organized separately.",
+  },
+  {
+    q: "Does BillBite help identify inventory losses or stock differences?",
+    a: "Yes. BillBite includes stock variance reporting and inventory audit tools that help you identify differences between recorded stock and physical inventory.",
+  },
+  {
+    q: "Is BillBite suitable for small and growing restaurants?",
+    a: "Yes. BillBite is designed to centralize restaurant operations, making it suitable for individual outlets as well as businesses that are growing into multiple branches.",
+  },
 ];
 
 /* ─── Testimonials ────────────────────────────────────────── */

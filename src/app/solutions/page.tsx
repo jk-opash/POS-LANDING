@@ -1,86 +1,442 @@
-import React from "react";
-import { theme } from "@/config/theme";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+"use client";
 
-export default function SolutionsPage() {
-  return (
-    <div style={{ flex: 1, backgroundColor: theme.colors.bgLight, paddingBottom: "5rem" }}>
-      {/* Hero */}
-      <section style={{ backgroundColor: theme.colors.bgDark, paddingTop: "8rem", paddingBottom: "6rem", textAlign: "center" }}>
-        <div className="pp-wrap">
-          <h1 style={{ fontFamily: theme.fonts.heading, fontWeight: 700, fontSize: "clamp(2.5rem, 6vw, 4rem)", color: "#fff", marginBottom: "1.5rem" }}>
-            Solutions by Industry
-          </h1>
-          <p style={{ color: "#9EAAB4", maxWidth: "700px", margin: "0 auto", fontSize: "1.25rem", lineHeight: 1.6 }}>
-            Built for the reality of Indian food businesses.
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { theme } from "@/config/theme";
+
+const SECTIONS = [
+  {
+    id: "fine-dine",
+    title: "Fine Dining & Premium",
+    bg: "#FFFFFF",
+    content: (
+      <>
+        <p
+          style={{
+            marginBottom: "2rem",
+            fontSize: "1.15rem",
+            lineHeight: 1.8,
+            color: "rgba(0,0,0,0.7)",
+          }}
+        >
+          Deliver exceptional hospitality with tools designed for complex floor
+          plans, multi-course coursing, and high-touch table service.
+        </p>
+        <div style={{ marginBottom: "2rem" }}>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Table Management & Coursing
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Visual drag-and-drop floor plans. Send items to the kitchen grouped
+            by course (Appetizers, Mains, Desserts) and fire them precisely when
+            the table is ready.
           </p>
         </div>
-      </section>
+        <div>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Guest CRM
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Track VIP preferences, allergies, and past visit history. Empower
+            your captains to provide highly personalized recommendations
+            directly from the POS-CLIENT terminal.
+          </p>
+        </div>
+      </>
+    ),
+  },
+  {
+    id: "cloud-kitchen",
+    title: "Cloud Kitchens (Dark Kitchens)",
+    bg: "#F9FAFB",
+    content: (
+      <>
+        <p
+          style={{
+            marginBottom: "2rem",
+            fontSize: "1.15rem",
+            lineHeight: 1.8,
+            color: "rgba(0,0,0,0.7)",
+          }}
+        >
+          Built for high-volume delivery. Optimize prep times, manage multiple
+          virtual brands, and eliminate tablet clutter.
+        </p>
+        <div style={{ marginBottom: "2rem" }}>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Virtual Brand Support
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Operate multiple brands out of the same physical kitchen. The
+            POS-NEW aggregator hub distinctly tags incoming orders by brand,
+            routing them to the correct prep stations seamlessly.
+          </p>
+        </div>
+        <div>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Kitchen Display Systems (KDS)
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Replace paper KOTs with digital screens. Track exact ticket times,
+            prioritize delayed orders automatically, and mark items ready for
+            rider pickup with a single tap.
+          </p>
+        </div>
+      </>
+    ),
+  },
+  {
+    id: "qsr",
+    title: "QSRs & Cafés",
+    bg: "#FFFFFF",
+    content: (
+      <>
+        <p
+          style={{
+            marginBottom: "2rem",
+            fontSize: "1.15rem",
+            lineHeight: 1.8,
+            color: "rgba(0,0,0,0.7)",
+          }}
+        >
+          Speed is everything. Our system is optimized for rapid checkout,
+          self-service kiosks, and high footfall environments.
+        </p>
+        <div style={{ marginBottom: "2rem" }}>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Lightning Fast Billing
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Optimized UI for minimal clicks per transaction. Support for barcode
+            scanners, integrated weight scales, and instant UPI QR generation on
+            a secondary customer-facing display.
+          </p>
+        </div>
+        <div>
+          <strong
+            style={{
+              display: "block",
+              color: theme.colors.textDark,
+              marginBottom: "0.5rem",
+              fontSize: "1.1rem",
+            }}
+          >
+            Self-Serve Kiosks
+          </strong>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              color: "rgba(0,0,0,0.65)",
+              margin: 0,
+            }}
+          >
+            Deploy standalone ordering terminals utilizing our Web Ordering
+            module to bust lines during peak rush hours, increasing average
+            ticket sizes through automated upsells.
+          </p>
+        </div>
+      </>
+    ),
+  },
+];
 
-      <section style={{ padding: "5rem 0" }}>
-        <div className="pp-wrap" style={{ maxWidth: "1000px", display: "flex", flexDirection: "column", gap: "3rem" }}>
-          
-          {/* Restaurant */}
-          <div className="bento-card" style={{ display: "flex", flexDirection: "row", padding: 0, overflow: "hidden", background: theme.colors.bgSurface }}>
-            <div style={{ padding: "3rem", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "2rem", fontWeight: 700, color: theme.colors.textDark, marginBottom: "1rem" }}>Restaurants</h2>
-              <p style={{ color: theme.colors.textDark, opacity: 0.8, fontSize: "1.1rem", marginBottom: "2rem", fontStyle: "italic" }}>
-                "From the host stand to the kitchen, one system. Seat a table, send a round to the kitchen, add another round when they order more, split the bill three ways at the end — all without a single paper ticket changing hands."
-              </p>
-              <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", color: theme.colors.accent, fontWeight: 700 }}>
-                See it in action <ArrowRight style={{ marginLeft: "0.5rem", width: "1rem", height: "1rem" }} />
-              </Link>
-            </div>
-            <div style={{ flex: 1, background: theme.colors.bgLight, borderLeft: `1px solid ${theme.colors.border}`, display: "flex", alignItems: "center", justifyContent: "center", minHeight: "300px" }}>
-              <span style={{ color: "rgba(0,0,0,0.3)", fontWeight: 600 }}>Restaurant POS & KOT</span>
+export default function SolutionsPage() {
+  const [activeSection, setActiveSection] = useState(SECTIONS[0].id);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionElements = SECTIONS.map((s) =>
+        document.getElementById(s.id),
+      );
+      const scrollPosition = window.scrollY + 300;
+
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const el = sectionElements[i];
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(SECTIONS[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div
+      style={{
+        backgroundColor: theme.colors.bgLight,
+        minHeight: "100vh",
+        color: theme.colors.textDark,
+      }}
+    >
+      <div
+        style={{
+          paddingTop: "160px",
+          paddingBottom: "80px",
+          paddingLeft: "2rem",
+          paddingRight: "2rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <div
+            style={{
+              display: "inline-block",
+              padding: "0.4rem 1rem",
+              borderRadius: "100px",
+              background: "rgba(255, 69, 0, 0.08)",
+              color: theme.colors.primary,
+              fontWeight: 700,
+              fontSize: "0.75rem",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Industry Solutions
+          </div>
+          <h1
+            style={{
+              fontSize: "clamp(3rem, 6vw, 4.5rem)",
+              fontFamily: theme.fonts.heading,
+              fontWeight: 800,
+              lineHeight: 1.05,
+              letterSpacing: "-0.03em",
+              marginBottom: "1.5rem",
+              maxWidth: "800px",
+            }}
+          >
+            Tailored for your
+            <br />
+            exact operating model.
+          </h1>
+          <p
+            style={{
+              fontSize: "1.25rem",
+              color: "rgba(0,0,0,0.6)",
+              lineHeight: 1.6,
+              maxWidth: "650px",
+            }}
+          >
+            Whether you run a high-touch fine dining restaurant or a high-volume
+            cloud kitchen, our ecosystem adapts to your workflow.
+          </p>
+        </motion.div>
+      </div>
+
+      <div style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            position: "relative",
+          }}
+        >
+          <div
+            className="sol-sidebar"
+            style={{
+              position: "sticky",
+              top: "100px",
+              width: "320px",
+              flexShrink: 0,
+              padding: "4rem 3rem 4rem 1.5rem",
+              borderRight: "1px solid rgba(0,0,0,0.06)",
+              display: "none",
+              height: "calc(100vh - 100px)",
+              overflowY: "auto",
+            }}
+          >
+            <h4
+              style={{
+                fontSize: "0.85rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "rgba(0,0,0,0.4)",
+                marginBottom: "2rem",
+                fontWeight: 700,
+              }}
+            >
+              Use Cases
+            </h4>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.25rem",
+              }}
+            >
+              {SECTIONS.map((s) => (
+                <button
+                  key={s.id}
+                  onClick={() => {
+                    const el = document.getElementById(s.id);
+                    if (el) {
+                      const y =
+                        el.getBoundingClientRect().top + window.scrollY - 100;
+                      window.scrollTo({ top: y, behavior: "smooth" });
+                    }
+                  }}
+                  style={{
+                    textAlign: "left",
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    margin: 0,
+                    cursor: "pointer",
+                    fontSize: "1rem",
+                    fontWeight: activeSection === s.id ? 700 : 500,
+                    color:
+                      activeSection === s.id
+                        ? theme.colors.primary
+                        : "rgba(0,0,0,0.5)",
+                    transition: "all 0.2s ease",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "4px",
+                      height: activeSection === s.id ? "1.5rem" : "0px",
+                      backgroundColor: theme.colors.primary,
+                      borderRadius: "4px",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    }}
+                  />
+                  {s.title}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Cafe */}
-          <div className="bento-card" style={{ display: "flex", flexDirection: "row-reverse", padding: 0, overflow: "hidden", background: theme.colors.bgSurface }}>
-             <div style={{ padding: "3rem", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "2rem", fontWeight: 700, color: theme.colors.textDark, marginBottom: "1rem" }}>Cafés</h2>
-              <p style={{ color: theme.colors.textDark, opacity: 0.8, fontSize: "1.1rem", marginBottom: "2rem", fontStyle: "italic" }}>
-                "Built for speed at the counter. A simpler menu, a faster ticket, GST-correct billing every time."
-              </p>
-               <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", color: theme.colors.accent, fontWeight: 700 }}>
-                Explore Café features <ArrowRight style={{ marginLeft: "0.5rem", width: "1rem", height: "1rem" }} />
-              </Link>
-            </div>
-            <div style={{ flex: 1, background: theme.colors.bgLight, borderRight: `1px solid ${theme.colors.border}`, display: "flex", alignItems: "center", justifyContent: "center", minHeight: "300px" }}>
-              <span style={{ color: "rgba(0,0,0,0.3)", fontWeight: 600 }}>Café Fast-Billing</span>
-            </div>
-          </div>
-
-          {/* Cloud Kitchen */}
-          <div className="bento-card" style={{ display: "flex", flexDirection: "row", padding: 0, overflow: "hidden", background: theme.colors.bgSurface, border: `2px solid ${theme.colors.accent}`, boxShadow: "var(--shadow-accent)" }}>
-            <div style={{ padding: "3rem", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "2rem", fontWeight: 700, color: theme.colors.textDark, marginBottom: "1rem" }}>Cloud Kitchens</h2>
-              <p style={{ color: theme.colors.textDark, opacity: 0.8, fontSize: "1.1rem", marginBottom: "2rem", fontStyle: "italic" }}>
-                "One screen for every order, every platform. Zomato and Swiggy orders land right alongside your own takeaway orders — accept, prep, and reconcile the payout without juggling three different tablets."
-              </p>
-               <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", color: theme.colors.accent, fontWeight: 700 }}>
-                See Cloud Kitchen setup <ArrowRight style={{ marginLeft: "0.5rem", width: "1rem", height: "1rem" }} />
-              </Link>
-            </div>
-            <div style={{ flex: 1, background: "rgba(255, 90, 31, 0.05)", borderLeft: "1px solid rgba(255, 90, 31, 0.2)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: "300px" }}>
-              <span style={{ color: theme.colors.accent, fontWeight: 600, opacity: 0.5 }}>Aggregator Unified Screen</span>
-            </div>
-          </div>
-
-          {/* Others */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "1.5rem" }}>
-            {["Bar/Lounge", "Retail", "Grocery"].map((ind) => (
-              <div key={ind} className="bento-card" style={{ background: theme.colors.bgSurface, padding: "3rem", textAlign: "center", alignItems: "center", justifyContent: "center" }}>
-                <h3 style={{ fontFamily: theme.fonts.heading, fontWeight: 700, fontSize: "1.5rem", marginBottom: "1rem", color: theme.colors.textDark }}>{ind}</h3>
-                <span className="badge-outline">Coming Soon</span>
+          <div style={{ flex: 1, paddingBottom: "8rem" }}>
+            {SECTIONS.map((section) => (
+              <div
+                id={section.id}
+                key={section.id}
+                style={{
+                  padding: "5rem 2rem",
+                  background: section.bg,
+                  borderBottom: "1px solid rgba(0,0,0,0.04)",
+                }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  style={{ maxWidth: "750px" }}
+                >
+                  <h2
+                    style={{
+                      fontSize: "2.25rem",
+                      fontWeight: 800,
+                      marginBottom: "2.5rem",
+                      letterSpacing: "-0.02em",
+                      color: theme.colors.textDark,
+                    }}
+                  >
+                    {section.title}
+                  </h2>
+                  {section.content}
+                </motion.div>
               </div>
             ))}
           </div>
-
         </div>
-      </section>
+      </div>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        @media (min-width: 900px) {
+          .sol-sidebar { display: block !important; }
+        }
+      `,
+        }}
+      />
     </div>
   );
 }

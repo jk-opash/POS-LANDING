@@ -30,7 +30,7 @@ export default function ScrollFeatures() {
       ref={containerRef}
       style={{
         position: "relative",
-        height: `${PRODUCTS.length * 150}vh`,
+        height: `${PRODUCTS.length * 100}vh`,
         backgroundColor: theme.colors.bgLight,
       }}
     >
@@ -96,6 +96,13 @@ export default function ScrollFeatures() {
               {PRODUCTS.map((_, i) => (
                 <div
                   key={i}
+                  onClick={() => {
+                    if (containerRef.current) {
+                      const targetY =
+                        containerRef.current.offsetTop + i * window.innerHeight;
+                      window.scrollTo({ top: targetY, behavior: "smooth" });
+                    }
+                  }}
                   style={{
                     height: "4px",
                     flex: 1,
@@ -105,6 +112,7 @@ export default function ScrollFeatures() {
                         ? theme.colors.primary
                         : "rgba(0,0,0,0.08)",
                     transition: "background 0.4s ease",
+                    cursor: "pointer",
                   }}
                 />
               ))}

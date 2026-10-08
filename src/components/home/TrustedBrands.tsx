@@ -1,58 +1,60 @@
-import React, { useState } from "react";
+import React from "react";
 import { theme } from "@/config/theme";
 
+const FEATURES = [
+  "POS & Billing",
+  "Inventory Tracking",
+  "Menu Engineering",
+  "Table Layouts",
+  "KOT Management",
+  "CRM & Loyalty",
+  "Aggregator Sync",
+  "Supplier Management",
+  "Staff Payroll",
+  "Live Analytics",
+  "Multi-Outlet",
+  "AI Forecasting",
+  "Direct Ordering",
+  "Tax & Accounting",
+  "Automated Alerts",
+  "Offline Mode",
+];
 
 export default function TrustedBrands() {
-
-
   return (
     <>
       {/* ════════════════════════════════════════════════════
-          2. TRUSTED BRANDS MARQUEE
+          FEATURES MARQUEE
       ════════════════════════════════════════════════════ */}
       <section
         style={{
-          padding: "3rem 0",
+          padding: "2.5rem 0",
           backgroundColor: theme.colors.bgLight,
-          borderBottom: `1px solid ${theme.colors.border}`,
           overflow: "hidden",
         }}
       >
-        <div className="pp-wrap" style={{ marginBottom: "1.75rem" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <div
-              style={{
-                flex: 1,
-                height: "1px",
-                background: theme.colors.border,
-              }}
-            />
-
-            <p
-              style={{
-                fontFamily: theme.fonts.body,
-                fontWeight: 500,
-                fontSize: "0.875rem",
-                color: theme.colors.textDark,
-                whiteSpace: "nowrap",
-                margin: 0,
-              }}
-            >
-              Everything you need to{" "}
-              <strong style={{ color: theme.colors.primary }}>
-                run, manage & grow
-              </strong>{" "}
-              your business
-            </p>
-
-            <div
-              style={{
-                flex: 1,
-                height: "1px",
-                background: theme.colors.border,
-              }}
-            />
-          </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "2rem",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.15em",
+              color: theme.colors.primary,
+              background: "rgba(255, 69, 0, 0.08)",
+              padding: "0.4rem 1.2rem",
+              borderRadius: "100px",
+              border: `1px solid ${theme.colors.primary}20`,
+            }}
+          >
+            A Unified Ecosystem
+          </span>
         </div>
 
         <div
@@ -69,7 +71,7 @@ export default function TrustedBrands() {
               top: 0,
               left: 0,
               bottom: 0,
-              width: "150px",
+              width: "15vw",
               background: `linear-gradient(to right, ${theme.colors.bgLight}, transparent)`,
               zIndex: 2,
               pointerEvents: "none",
@@ -83,7 +85,7 @@ export default function TrustedBrands() {
               top: 0,
               right: 0,
               bottom: 0,
-              width: "150px",
+              width: "15vw",
               background: `linear-gradient(to left, ${theme.colors.bgLight}, transparent)`,
               zIndex: 2,
               pointerEvents: "none",
@@ -93,9 +95,10 @@ export default function TrustedBrands() {
           <div
             style={{
               display: "flex",
-              gap: "1.25rem",
+              gap: "1rem",
               width: "max-content",
               animation: "scrollX 35s linear infinite",
+              padding: "0.5rem 0",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.animationPlayState = "paused";
@@ -104,81 +107,63 @@ export default function TrustedBrands() {
               e.currentTarget.style.animationPlayState = "running";
             }}
           >
-            {[
-              "POS & Billing",
-              "Inventory Management",
-              "Menu Management",
-              "Table Management",
-              "Kitchen Display",
-              "CRM & Loyalty",
-              "Orders Management",
-              "Purchase & Suppliers",
-              "Employee Management",
-              "Reports & Analytics",
-              "Multi-Branch Management",
-              "AI Business Insights",
-              "Online Orders",
-              "Accounting",
-              "Smart Notifications",
-              "Offline POS",
-              "POS & Billing",
-              "Inventory Management",
-              "Menu Management",
-              "Table Management",
-              "Kitchen Display",
-              "CRM & Loyalty",
-              "Orders Management",
-              "Purchase & Suppliers",
-              "Employee Management",
-              "Reports & Analytics",
-              "Multi-Branch Management",
-              "AI Business Insights",
-              "Online Orders",
-              "Accounting",
-              "Smart Notifications",
-              "Offline POS",
-            ].map((feature, i) => (
+            {[...FEATURES, ...FEATURES, ...FEATURES].map((feature, i) => (
               <div
                 key={`${feature}-${i}`}
                 style={{
-                  padding: "0.75rem 1.5rem",
-                  background: theme.colors.bgSurface,
-                  borderRadius: "0.5rem",
-                  border: `1px solid ${theme.colors.border}`,
-                  boxShadow: theme.shadows.sm,
-                  fontFamily: theme.fonts.heading,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.6rem",
+                  padding: "0.6rem 1.25rem",
+                  background: "#FFFFFF",
+                  borderRadius: "100px",
+                  border: "1px solid rgba(0,0,0,0.04)",
+                  boxShadow: "0 2px 10px rgba(0,0,0,0.02)",
+                  fontFamily: theme.fonts.body,
                   fontWeight: 600,
-                  fontSize: "0.95rem",
+                  fontSize: "0.9rem",
                   color: theme.colors.textDark,
                   whiteSpace: "nowrap",
-                  flexShrink: 0,
-                  opacity: 0.65,
-                  filter: "grayscale(100%)",
-                  transition: "all 0.3s ease",
-                  cursor: "default",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  cursor: "pointer",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = "1";
-                  e.currentTarget.style.filter = "grayscale(0%)";
-                  e.currentTarget.style.transform = "scale(1.05)";
-                  e.currentTarget.style.color = theme.colors.accent;
-                  e.currentTarget.style.borderColor = theme.colors.accent;
+                  e.currentTarget.style.transform = "translateY(-3px) scale(1.02)";
+                  e.currentTarget.style.boxShadow = "0 8px 25px rgba(0,0,0,0.08)";
+                  e.currentTarget.style.borderColor = "rgba(0,0,0,0.08)";
+                  const dot = e.currentTarget.querySelector('.feature-dot') as HTMLElement;
+                  if (dot) {
+                    dot.style.background = theme.colors.primary;
+                    dot.style.boxShadow = `0 0 8px ${theme.colors.primary}80`;
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = "0.65";
-                  e.currentTarget.style.filter = "grayscale(100%)";
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.color = theme.colors.textDark;
-                  e.currentTarget.style.borderColor = theme.colors.border;
+                  e.currentTarget.style.transform = "translateY(0) scale(1)";
+                  e.currentTarget.style.boxShadow = "0 2px 10px rgba(0,0,0,0.02)";
+                  e.currentTarget.style.borderColor = "rgba(0,0,0,0.04)";
+                  const dot = e.currentTarget.querySelector('.feature-dot') as HTMLElement;
+                  if (dot) {
+                    dot.style.background = "rgba(0,0,0,0.15)";
+                    dot.style.boxShadow = "none";
+                  }
                 }}
               >
+                <div
+                  className="feature-dot"
+                  style={{
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    background: "rgba(0,0,0,0.15)",
+                    transition: "all 0.3s ease",
+                  }}
+                />
                 {feature}
               </div>
             ))}
           </div>
         </div>
       </section>
-
     </>
   );
 }

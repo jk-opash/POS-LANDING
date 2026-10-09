@@ -107,7 +107,7 @@ export default function WhyClientsLoveUs() {
           </h2>
           <p
             style={{
-              color: "rgba(255,255,255,0.6)",
+              color: "rgba(255,255,255,0.8)",
               fontSize: "1.1rem",
               maxWidth: "600px",
               margin: "0 auto",
@@ -187,7 +187,7 @@ export default function WhyClientsLoveUs() {
 
                   <div
                     style={{
-                      color: isActive ? feat.color : "rgba(255,255,255,0.3)",
+                      color: isActive ? feat.color : "rgba(255,255,255,0.6)",
                       transition: "color 0.3s ease",
                       display: "flex",
                       alignItems: "center",
@@ -204,21 +204,21 @@ export default function WhyClientsLoveUs() {
                   </div>
 
                   <div>
-                    <h4
+                    <h3
                       style={{
                         color: isActive
                           ? theme.colors.textLight
-                          : "rgba(255,255,255,0.6)",
+                          : "rgba(255,255,255,0.8)",
                         fontWeight: 600,
                         fontSize: "1rem",
                         marginBottom: "0.2rem",
                       }}
                     >
                       {feat.title}
-                    </h4>
+                    </h3>
                     <p
                       style={{
-                        color: "rgba(255,255,255,0.4)",
+                        color: "rgba(255,255,255,0.7)",
                         fontSize: "0.8rem",
                         margin: 0,
                       }}
@@ -408,7 +408,7 @@ export default function WhyClientsLoveUs() {
                   display: "flex",
                   alignItems: "center",
                   gap: "0.75rem",
-                  color: "rgba(255,255,255,0.4)",
+                  color: "rgba(255,255,255,0.7)",
                   fontSize: "0.9rem",
                   fontWeight: 600,
                   textTransform: "uppercase",

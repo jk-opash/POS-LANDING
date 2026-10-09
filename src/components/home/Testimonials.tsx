@@ -120,7 +120,7 @@ export default function Testimonials() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              color: theme.colors.accent,
+              color: "#C23A00",
               background: `${theme.colors.accent}15`,
               border: `1px solid ${theme.colors.accent}30`,
               padding: "0.5rem 1rem",
@@ -156,7 +156,7 @@ export default function Testimonials() {
           >
             Loved by restaurants.
             <br />
-            <span style={{ color: theme.colors.accent }}>
+            <span style={{ color: "#C23A00" }}>
               Trusted by founders.
             </span>
           </h2>
@@ -319,6 +319,7 @@ export default function Testimonials() {
         >
           <button
             onClick={handlePrev}
+            aria-label="Previous testimonial"
             style={{
               width: "3rem",
               height: "3rem",
@@ -348,6 +349,7 @@ export default function Testimonials() {
 
           <button
             onClick={handleNext}
+            aria-label="Next testimonial"
             style={{
               width: "3rem",
               height: "3rem",

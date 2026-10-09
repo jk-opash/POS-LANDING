@@ -313,14 +313,32 @@ export function Header() {
                             : item.label === "Outlet types"
                               ? "550px"
                               : "250px",
-                        padding:
-                          item.label === "POSS" || item.label === "Outlet types"
-                            ? "1.5rem"
-                            : "0.5rem",
                       }}
                     >
                       {/* Invisible bridge to prevent hover loss */}
                       <div className="navbar__submenu-bridge" />
+
+                      {/* Respective Title */}
+                      <div
+                        style={{
+                          padding: "1rem",
+                          borderBottom: "1px solid rgba(0,0,0,0.05)",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: "0.8rem",
+                            fontWeight: 700,
+                            color: "#6b7280",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.05em",
+                          }}
+                        >
+                          {item.label === "POSS"
+                            ? "Products & Features"
+                            : item.label}
+                        </span>
+                      </div>
 
                       {item.label === "POSS" ? (
                         <div
@@ -599,6 +617,7 @@ export function Header() {
             </Link>
             <button
               onClick={closeMenu}
+              aria-label="Close menu"
               style={{ background: "none", border: "none", cursor: "pointer" }}
             >
               <svg

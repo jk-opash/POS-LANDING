@@ -81,13 +81,17 @@ const AnimatedStat = ({ value, label }: { value: string; label: string }) => {
 export default function Stats() {
   return (
     <section
-      style={{ backgroundColor: theme.colors.bgDark, padding: "3rem 0 4rem 0" }}
+      style={{ backgroundColor: theme.colors.bgDark, padding: "3rem 0 3rem 0" }}
     >
-      <div className="pp-wrap" style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        className="pp-wrap"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
         <div
           className="stats-container"
           style={{
-            background: "linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
+            background:
+              "linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
             border: "1px solid rgba(255,255,255,0.08)",
             borderRadius: "100px",
             padding: "1.25rem 3rem",
@@ -116,7 +120,14 @@ export default function Stats() {
           />
 
           {/* Left Heading */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", zIndex: 1 }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.25rem",
+              zIndex: 1,
+            }}
+          >
             <div
               style={{
                 display: "flex",
@@ -164,7 +175,8 @@ export default function Stats() {
             style={{
               width: "1px",
               height: "35px",
-              background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), transparent)",
+              background:
+                "linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), transparent)",
               display: "block",
               zIndex: 1,
             }}
@@ -188,7 +200,8 @@ export default function Stats() {
                     style={{
                       width: "1px",
                       height: "25px",
-                      background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.15), transparent)",
+                      background:
+                        "linear-gradient(to bottom, transparent, rgba(255,255,255,0.15), transparent)",
                       display: "block",
                     }}
                     className="stat-divider"

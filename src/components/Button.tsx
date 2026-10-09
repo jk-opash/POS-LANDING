@@ -42,7 +42,7 @@ export function Button({
 
   const getColor = () => {
     switch (variant) {
-      case "primary": return theme.colors.textLight;
+      case "primary": return theme.colors.textDark;
       case "secondary": return theme.colors.textDark;
       case "outline": return theme.colors.accent;
       case "ghost": return theme.colors.textMuted;

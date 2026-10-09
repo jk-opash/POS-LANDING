@@ -335,7 +335,7 @@ export function Footer() {
           {/* Link Columns */}
           {FOOTER_COLS.map((col) => (
             <div key={col.title}>
-              <h4
+              <h3
                 style={{
                   color: theme.colors.textLight,
                   fontFamily: theme.fonts.heading,
@@ -346,7 +346,7 @@ export function Footer() {
                 }}
               >
                 {col.title}
-              </h4>
+              </h3>
               <ul
                 style={{
                   listStyle: "none",

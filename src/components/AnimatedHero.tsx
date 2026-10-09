@@ -1,14 +1,11 @@
 "use client";
-import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IMAGES } from "../assets";
+import Image from "next/image";
 import { theme } from "../config/theme";
 import { Button } from "./Button";
-import { PRODUCTS } from "../constants/products";
 
 export default function AnimatedHero() {
-  const [activeTab, setActiveTab] = useState(0);
-
   return (
     <div
       style={{
@@ -18,13 +15,13 @@ export default function AnimatedHero() {
         overflow: "hidden",
       }}
     >
+
+
       <div
         style={{
-          inset: 0,
-          paddingTop: "6rem",
-          backgroundImage: "url(/hero_pos_bg.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "bottom center",
+          position: "relative",
+          zIndex: 10,
+          paddingTop: "8rem",
         }}
       >
         <motion.div
@@ -82,10 +79,8 @@ export default function AnimatedHero() {
         </motion.div>
 
         {/* Dashboard Image Showcase */}
-        <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        {/* CRITICAL LCP ELEMENT: Do not animate this with opacity: 0 to avoid render delay */}
+        <div
           style={{
             position: "relative",
             width: "100%",
@@ -93,13 +88,119 @@ export default function AnimatedHero() {
             margin: "0 auto 0rem",
           }}
         >
-          <img
+          {/* Ultra-Modern Typography Marquee Background - Anchored strictly behind the image */}
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "100vw",
+              height: "150%",
+              zIndex: -1,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              gap: "2rem",
+              pointerEvents: "none",
+            }}
+          >
+            {/* Row 1 - Moving Left */}
+            <motion.div
+              animate={{ x: [0, -1000] }}
+              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+              style={{
+                whiteSpace: "nowrap",
+                fontFamily: theme.fonts.heading,
+                fontSize: "8rem",
+                fontWeight: 900,
+                color: theme.colors.textMuted,
+                opacity: 0.2,
+                lineHeight: 1,
+                userSelect: "none",
+              }}
+            >
+              POINT OF SALE • INVENTORY • ANALYTICS • POINT OF SALE • INVENTORY •
+              ANALYTICS
+            </motion.div>
+
+            {/* Row 2 - Moving Right */}
+            <motion.div
+              animate={{ x: [-1000, 0] }}
+              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+              style={{
+                whiteSpace: "nowrap",
+                fontFamily: theme.fonts.heading,
+                fontSize: "10rem",
+                fontWeight: 900,
+                color: theme.colors.accent,
+                opacity: 0.2,
+                lineHeight: 1,
+                userSelect: "none",
+              }}
+            >
+              RESTAURANTS • CAFES • CLOUD KITCHENS • RESTAURANTS • CAFES • CLOUD
+              KITCHENS
+            </motion.div>
+
+            {/* Row 3 - Moving Left */}
+            <motion.div
+              animate={{ x: [0, -1000] }}
+              transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+              style={{
+                whiteSpace: "nowrap",
+                fontFamily: theme.fonts.heading,
+                fontSize: "8rem",
+                fontWeight: 900,
+                color: theme.colors.primary,
+                opacity: 0.2,
+                lineHeight: 1,
+                userSelect: "none",
+              }}
+            >
+              OMNICHANNEL • DELIVERY • PAYMENTS • OMNICHANNEL • DELIVERY • PAYMENTS
+            </motion.div>
+
+            {/* Top & Bottom Fade Overlays so it blends seamlessly */}
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                height: "30%",
+                background: `linear-gradient(to bottom, ${theme.colors.bgLight} 0%, transparent 100%)`,
+                zIndex: 1,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: "30%",
+                background: `linear-gradient(to top, ${theme.colors.bgLight} 0%, transparent 100%)`,
+                zIndex: 1,
+              }}
+            />
+          </div>
+          <Image
             src={IMAGES.heroBg}
             alt="Dashboard"
-            style={{ width: "100%", borderRadius: "16px", display: "block" }}
+            width={1000}
+            height={658}
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 1000px) 100vw, 1000px"
+            style={{
+              width: "100%",
+              height: "auto",
+              borderRadius: "16px",
+              display: "block",
+            }}
           />
-        </motion.div>
-
+        </div>
         {/* Low Wide Interactive Features Section (Replacing the big white panel) */}
       </div>
     </div>

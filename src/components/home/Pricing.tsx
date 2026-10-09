@@ -131,7 +131,7 @@ export default function Pricing() {
                 color:
                   billing === "monthly"
                     ? theme.colors.textLight
-                    : theme.colors.textMuted,
+                    : theme.colors.whiteAlpha.a80,
                 cursor: "pointer",
                 transition: "color 0.4s ease",
                 position: "relative",
@@ -156,7 +156,7 @@ export default function Pricing() {
                 color:
                   billing === "yearly"
                     ? theme.colors.textLight
-                    : theme.colors.textMuted,
+                    : theme.colors.whiteAlpha.a80,
                 cursor: "pointer",
                 transition: "color 0.4s ease",
                 position: "relative",
@@ -171,7 +171,7 @@ export default function Pricing() {
               Yearly{" "}
               <span
                 style={{
-                  opacity: billing === "yearly" ? 1 : 0.6,
+                  opacity: billing === "yearly" ? 1 : 0.8,
                   fontSize: "0.8em",
                 }}
               >
@@ -309,7 +309,7 @@ export default function Pricing() {
                 </div>
                 <p
                   style={{
-                    color: theme.colors.whiteAlpha.a50,
+                    color: theme.colors.whiteAlpha.a70,
                     fontSize: "0.8rem",
                     fontWeight: 500,
                   }}

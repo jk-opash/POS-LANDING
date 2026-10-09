@@ -51,7 +51,7 @@ export default function Ecosystem() {
           />
           <span
             style={{
-              color: theme.colors.accent,
+              color: "#C23A00",
               fontSize: "0.75rem",
               fontWeight: 800,
               textTransform: "uppercase",

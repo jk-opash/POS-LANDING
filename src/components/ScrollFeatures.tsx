@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
+import Image from "next/image";
 import {
   motion,
   AnimatePresence,
@@ -210,7 +211,7 @@ export default function ScrollFeatures() {
                               background: theme.colors.primary,
                             }}
                           />
-                          <h4
+                          <h3
                             style={{
                               fontSize: "0.95rem",
                               fontWeight: 700,
@@ -219,7 +220,7 @@ export default function ScrollFeatures() {
                             }}
                           >
                             {feat.title}
-                          </h4>
+                          </h3>
                         </div>
                         <p
                           style={{
@@ -301,13 +302,16 @@ export default function ScrollFeatures() {
                     padding: "1.5rem",
                   }}
                 >
-                  <img
+                  <Image
                     src={
                       typeof PRODUCTS[activeIndex].img === "string"
                         ? PRODUCTS[activeIndex].img
                         : (PRODUCTS[activeIndex].img as any).src
                     }
                     alt={PRODUCTS[activeIndex].title}
+                    width={451}
+                    height={610}
+                    priority={activeIndex === 0}
                     style={{
                       width: "100%",
                       height: "100%",

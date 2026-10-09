@@ -42,6 +42,7 @@ export default function FaqItem({ question, answer, isOpen, onClick }: FaqItemPr
     >
       <button
         onClick={onClick}
+        aria-expanded={isOpen}
         style={{
           width: "100%",
           padding: "1.5rem",
@@ -60,7 +61,7 @@ export default function FaqItem({ question, answer, isOpen, onClick }: FaqItemPr
             fontFamily: theme.fonts.heading,
             fontWeight: 700,
             fontSize: "1.15rem",
-            color: isOpen ? theme.colors.accent : theme.colors.textDark,
+            color: theme.colors.textDark,
             transition: "color 0.3s ease",
             lineHeight: 1.4
           }}
@@ -72,7 +73,7 @@ export default function FaqItem({ question, answer, isOpen, onClick }: FaqItemPr
             width: "40px",
             height: "40px",
             borderRadius: "50%",
-            background: isOpen ? theme.colors.accent : "rgba(0,0,0,0.04)",
+            background: isOpen ? "#C23A00" : "rgba(0,0,0,0.04)",
             color: isOpen ? theme.colors.textLight : theme.colors.textDark,
             transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
             display: "flex",

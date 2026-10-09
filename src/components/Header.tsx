@@ -533,7 +533,7 @@ export function Header() {
 
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <Link
-              href="/#demo-form"
+              href="/demo"
               onClick={closeMenu}
               className="btn-primary desktop-cta"
               style={{
@@ -710,7 +710,7 @@ export function Header() {
             ))}
             <div style={{ marginTop: "2rem" }}>
               <Link
-                href="/#demo-form"
+                href="/demo"
                 onClick={closeMenu}
                 className="btn-primary"
                 style={{

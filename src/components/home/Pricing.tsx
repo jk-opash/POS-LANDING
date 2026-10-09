@@ -373,7 +373,7 @@ export default function Pricing() {
               </ul>
 
               <Link
-                href="/#demo-form"
+                href="/demo"
                 style={{
                   display: "block",
                   textAlign: "center",

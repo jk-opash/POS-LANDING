@@ -51,7 +51,7 @@ export default function FoodCourtClient() {
               One cashier, multiple stalls. Print segregated token slips, integrate customer pagers, and beam ready-orders directly to public TV displays.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#3B82F6", color: "white" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#3B82F6", color: "white" }}>
                 Start Free Trial
               </Link>
             </motion.div>

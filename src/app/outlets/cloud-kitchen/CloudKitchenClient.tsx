@@ -118,7 +118,7 @@ export default function CloudKitchenClient() {
               }}
             >
               <Link
-                href="/#demo-form"
+                href="/demo"
                 className="btn-primary"
                 style={{
                   padding: "1rem 2rem",
@@ -1537,7 +1537,7 @@ export default function CloudKitchenClient() {
               growth. Unify your cloud kitchen operations today.
             </p>
             <Link
-              href="/#demo-form"
+              href="/demo"
               className="btn-primary"
               style={{
                 padding: "1.25rem 3rem",

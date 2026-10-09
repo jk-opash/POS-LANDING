@@ -55,7 +55,7 @@ export default function CafeClient() {
               When the line is out the door, speed is everything. Process orders in under 3 clicks, scan QR codes instantly, upsell with smart prompts, and run loyalty programs right at the counter.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#F59E0B", color: "#111827" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#F59E0B", color: "#111827" }}>
                 Speed Up My Counter
               </Link>
               <Link href="#features" className="btn-outline-pill" style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}>
@@ -430,7 +430,7 @@ export default function CafeClient() {
             <p style={{ fontSize: "1.125rem", color: "rgba(255,255,255,0.7)", marginBottom: "2.5rem", lineHeight: 1.6 }}>
               Give your cashiers the tools they need to serve more customers per hour, increasing revenue during your most critical morning and lunch rushes.
             </p>
-            <Link href="/#demo-form" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#F59E0B", color: "#111827" }}>
+            <Link href="/demo" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#F59E0B", color: "#111827" }}>
               Start Your Free Trial
             </Link>
           </motion.div>

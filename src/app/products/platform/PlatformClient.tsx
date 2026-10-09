@@ -55,7 +55,7 @@ export default function PlatformClient() {
               A complete suite of modules to manage multi-branch franchises, granular staff permissions, supplier CRMs, petty cash, and immutable security audit logs—all from one unified dashboard.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#6366F1" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#6366F1" }}>
                 Explore Platform Capabilities
               </Link>
             </motion.div>
@@ -353,7 +353,7 @@ export default function PlatformClient() {
             <p style={{ fontSize: "1.125rem", color: "var(--pp-text-muted)", marginBottom: "2.5rem", lineHeight: 1.6 }}>
               From managing petty cash to locking down staff permissions across 50 outlets, our enterprise platform puts you firmly in the driver's seat.
             </p>
-            <Link href="/#demo-form" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#6366F1", color: "white" }}>
+            <Link href="/demo" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#6366F1", color: "white" }}>
               Upgrade Your Operations
             </Link>
           </motion.div>

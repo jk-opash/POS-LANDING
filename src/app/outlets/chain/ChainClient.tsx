@@ -49,7 +49,7 @@ export default function ChainClient() {
               Control 5 or 500 outlets from a single cloud dashboard. Push global menu updates, calculate franchise royalties, and dispatch goods from your central kitchen.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#A855F7", color: "white" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#A855F7", color: "white" }}>
                 Contact Enterprise Sales
               </Link>
             </motion.div>

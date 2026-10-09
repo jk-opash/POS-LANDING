@@ -52,7 +52,7 @@ export default function TableFloorClient() {
               Replicate your exact restaurant layout digitally. Track live occupancy, merge tables for large groups, and optimize your Turnaround Time (TAT) to serve more guests every shift.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#8B5CF6" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#8B5CF6" }}>
                 Map Your Restaurant
               </Link>
               <Link href="#features" className="btn-outline-pill" style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}>
@@ -285,7 +285,7 @@ export default function TableFloorClient() {
             <p style={{ fontSize: "1.125rem", color: "rgba(255,255,255,0.7)", marginBottom: "2.5rem", lineHeight: 1.6 }}>
               Give your hosts and waiters the tools they need to serve guests faster, reduce errors, and turn over tables efficiently.
             </p>
-            <Link href="/#demo-form" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#8B5CF6" }}>
+            <Link href="/demo" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#8B5CF6" }}>
               Build Your Floor Plan
             </Link>
           </motion.div>

@@ -51,7 +51,7 @@ export default function DessertClient() {
               Manage complex topping modifiers, connect weighing scales for frozen yogurt, and track inventory from the master tub down to the final scoop.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#EC4899", color: "white" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#EC4899", color: "white" }}>
                 Start Free Trial
               </Link>
             </motion.div>

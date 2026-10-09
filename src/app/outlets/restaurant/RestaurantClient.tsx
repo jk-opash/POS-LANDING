@@ -124,7 +124,7 @@ export default function RestaurantClient() {
               }}
             >
               <Link
-                href="/#demo-form"
+                href="/demo"
                 className="btn-primary"
                 style={{
                   padding: "1rem 2rem",
@@ -2244,7 +2244,7 @@ export default function RestaurantClient() {
               hospitality.
             </p>
             <Link
-              href="/#demo-form"
+              href="/demo"
               className="btn-primary"
               style={{
                 padding: "1.25rem 3rem",

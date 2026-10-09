@@ -50,7 +50,7 @@ export default function PizzeriaClient() {
               Handle complex half-and-half orders, track your delivery drivers in real-time, and manage dynamic pricing matrices for sizes and crusts.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#EF4444", color: "white" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#EF4444", color: "white" }}>
                 Start Free Trial
               </Link>
             </motion.div>

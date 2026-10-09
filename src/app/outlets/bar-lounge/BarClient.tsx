@@ -56,7 +56,7 @@ export default function BarClient() {
               When the bar is three deep on a Friday night, every second counts. Speed up service with fast cash modes, secure tab pre-authorizations, automated happy hour pricing, and precise liquid inventory tracking.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#8B5CF6" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#8B5CF6" }}>
                 See it in Action
               </Link>
               <Link href="#features" className="btn-outline-pill" style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}>
@@ -450,7 +450,7 @@ export default function BarClient() {
             <p style={{ fontSize: "1.125rem", color: "rgba(255,255,255,0.7)", marginBottom: "2.5rem", lineHeight: 1.6 }}>
               Don't let a slow POS system cost you revenue on your busiest nights. Upgrade to a system designed specifically for high-volume bars and nightclubs.
             </p>
-            <Link href="/#demo-form" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#8B5CF6" }}>
+            <Link href="/demo" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#8B5CF6" }}>
               Book a Free Demo
             </Link>
           </motion.div>

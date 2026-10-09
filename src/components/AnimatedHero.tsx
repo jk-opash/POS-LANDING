@@ -15,7 +15,7 @@ export default function AnimatedHero() {
         overflow: "hidden",
       }}
     >
-
+      {/* Background Gradient Orbs */}
 
       <div
         style={{
@@ -24,6 +24,55 @@ export default function AnimatedHero() {
           paddingTop: "8rem",
         }}
       >
+        <motion.div
+          animate={{
+            x: [0, -50, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          style={{
+            position: "absolute",
+            top: "5%",
+            left: "10%",
+            width: "15vw",
+            height: "15vw",
+            background: theme.colors.accent,
+            filter: "blur(120px)",
+            borderRadius: "50%",
+            zIndex: 0,
+            opacity: 0.5,
+            pointerEvents: "none",
+          }}
+        />
+        <motion.div
+          animate={{
+            x: [0, -50, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          style={{
+            position: "absolute",
+            top: "20%",
+            right: "10%",
+            width: "15vw",
+            height: "15vw",
+            background: theme.colors.accent,
+            filter: "blur(120px)",
+            borderRadius: "50%",
+            opacity: 0.8,
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -60,13 +109,20 @@ export default function AnimatedHero() {
           <div
             style={{ display: "flex", gap: "1rem", justifyContent: "center" }}
           >
-            <Button variant="primary" size="lg" shape="pill" animated>
+            <Button
+              variant="primary"
+              size="lg"
+              shape="pill"
+              animated
+              href="/pricing"
+            >
               Start Free Trial
             </Button>
             <Button
               variant="outline"
               size="lg"
               shape="pill"
+              href="/demo"
               style={{
                 borderColor: "rgba(0,0,0,0.1)",
                 color: theme.colors.textDark,
@@ -120,8 +176,8 @@ export default function AnimatedHero() {
                 userSelect: "none",
               }}
             >
-              POINT OF SALE • INVENTORY • ANALYTICS • POINT OF SALE • INVENTORY •
-              ANALYTICS
+              POINT OF SALE • INVENTORY • ANALYTICS • POINT OF SALE • INVENTORY
+              • ANALYTICS
             </motion.div>
 
             {/* Row 2 - Moving Right */}
@@ -158,7 +214,8 @@ export default function AnimatedHero() {
                 userSelect: "none",
               }}
             >
-              OMNICHANNEL • DELIVERY • PAYMENTS • OMNICHANNEL • DELIVERY • PAYMENTS
+              OMNICHANNEL • DELIVERY • PAYMENTS • OMNICHANNEL • DELIVERY •
+              PAYMENTS
             </motion.div>
 
             {/* Top & Bottom Fade Overlays so it blends seamlessly */}

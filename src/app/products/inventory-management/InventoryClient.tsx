@@ -55,7 +55,7 @@ export default function InventoryClient() {
               Stop guessing your food costs. Track every gram of raw material, manage complex recipes, and auto-deduct stock with every single sale across all your outlets.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}>
                 Book a Free Demo
               </Link>
               <Link href="#features" className="btn-outline-pill" style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}>
@@ -321,7 +321,7 @@ export default function InventoryClient() {
             <p style={{ fontSize: "1.125rem", color: "var(--pp-text-muted)", marginBottom: "2.5rem", lineHeight: 1.6 }}>
               Join thousands of restaurants saving hours of manual stock-taking every week. Stop the leakage and start maximizing profits today.
             </p>
-            <Link href="/#demo-form" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px" }}>
+            <Link href="/demo" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px" }}>
               Schedule a Free Walkthrough
             </Link>
           </motion.div>

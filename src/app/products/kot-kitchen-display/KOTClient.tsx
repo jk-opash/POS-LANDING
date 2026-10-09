@@ -65,7 +65,7 @@ export default function KOTClient() {
               End the kitchen chaos. Digitize your back-of-house operations with smart station routing, allergy alerts, multi-round KOTs, automated 86ing, course management, digital recipe books, and live prep-time tracking screens.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#EF4444" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#EF4444" }}>
                 Digitize Your Kitchen
               </Link>
               <Link href="#features" className="btn-outline-pill" style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}>
@@ -714,7 +714,7 @@ export default function KOTClient() {
             <p style={{ fontSize: "1.125rem", color: "rgba(255,255,255,0.7)", marginBottom: "2.5rem", lineHeight: 1.6 }}>
               Whether you rely on traditional thermal printers or want to switch to fully digital touch-screens, our KOT system ensures the kitchen always knows exactly what to cook.
             </p>
-            <Link href="/#demo-form" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#EF4444" }}>
+            <Link href="/demo" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#EF4444" }}>
               Setup Kitchen Routing
             </Link>
           </motion.div>

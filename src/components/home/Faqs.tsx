@@ -63,7 +63,7 @@ export default function Faqs() {
               Everything you need to know about BillBite, from features and integrations to billing and setup. 
             </p>
 
-            <Link href="/#demo-form" style={{
+            <Link href="/demo" style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",

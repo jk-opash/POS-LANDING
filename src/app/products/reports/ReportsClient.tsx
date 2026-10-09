@@ -59,7 +59,7 @@ export default function ReportsClient() {
               Stop guessing. Get real-time insights into your restaurant's performance from anywhere. Track live sales, audit employee theft, monitor food cost variances, and export GST data for your CA in one click.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#EC4899" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#EC4899" }}>
                 View Sample Reports
               </Link>
               <Link href="#features" className="btn-outline-pill" style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}>
@@ -525,7 +525,7 @@ export default function ReportsClient() {
             <p style={{ fontSize: "1.125rem", color: "var(--pp-text-muted)", marginBottom: "2.5rem", lineHeight: 1.6 }}>
               Make data-driven decisions that actually increase your profit margins. Audit voids, stop theft, and manage your shifts with military precision.
             </p>
-            <Link href="/#demo-form" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#EC4899", color: "white" }}>
+            <Link href="/demo" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#EC4899", color: "white" }}>
               Unlock Your Analytics
             </Link>
           </motion.div>

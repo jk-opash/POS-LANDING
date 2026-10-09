@@ -51,7 +51,7 @@ export default function BakeryClient() {
               Manage complex custom cake pre-orders, track raw ingredient inventory like flour and yeast, and easily bundle morning coffee and pastry combos.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#F59E0B", color: "#111827" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#F59E0B", color: "#111827" }}>
                 Start Free Trial
               </Link>
             </motion.div>

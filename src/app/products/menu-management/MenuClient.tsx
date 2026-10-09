@@ -52,7 +52,7 @@ export default function MenuClient() {
               Control your entire catalog across infinite outlets and aggregator platforms from a single dashboard. Build complex variants, set upselling rules, and maintain flawless brand consistency.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#10B981" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#10B981" }}>
                 Build Your Menu
               </Link>
               <Link href="#features" className="btn-outline-pill" style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}>
@@ -300,7 +300,7 @@ export default function MenuClient() {
             <p style={{ fontSize: "1.125rem", color: "rgba(255,255,255,0.7)", marginBottom: "2.5rem", lineHeight: 1.6 }}>
               Stop using messy spreadsheets. Centralize your menu updates and ensure absolute brand consistency across all your channels.
             </p>
-            <Link href="/#demo-form" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#10B981" }}>
+            <Link href="/demo" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1.2rem", borderRadius: "100px", background: "#10B981" }}>
               Organize Your Menu Today
             </Link>
           </motion.div>

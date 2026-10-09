@@ -63,7 +63,7 @@ export default function ProductPageTemplate({
             style={{ display: "flex", gap: "1rem", justifyContent: "center" }}
           >
             <Link
-              href="/#demo-form"
+              href="/demo"
               className="btn-primary"
               style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}
             >

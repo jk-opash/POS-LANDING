@@ -51,7 +51,7 @@ export default function QSRClient() {
               Connect self-serve kiosks, drive-thru timers, and kitchen displays into one unified ecosystem designed entirely to lower your customer wait times.
             </motion.p>
             <motion.div variants={fadeUpVariant} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/#demo-form" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#10B981", color: "white" }}>
+              <Link href="/demo" className="btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem", background: "#10B981", color: "white" }}>
                 Start Free Trial
               </Link>
             </motion.div>
